@@ -83,18 +83,18 @@ namespace Coldairarrow.Business.Base_SysManage
                     children = new List<Menu>()
                 };
                 menus.Add(developMenu);
-                developMenu.children.Add(new Menu
-                {
-                    text = "代码生成",
-                    icon = "fa fa-circle-o",
-                    url = GetUrl("~/Base_SysManage/RapidDevelopment/Index")
-                });
-                developMenu.children.Add(new Menu
-                {
-                    text = "数据库连接管理",
-                    icon = "fa fa-circle-o",
-                    url = GetUrl("~/Base_SysManage/Base_DatabaseLink/Index")
-                });
+                //developMenu.children.Add(new Menu
+                //{
+                //    text = "代码生成",
+                //    icon = "fa fa-circle-o",
+                //    url = GetUrl("~/Base_SysManage/RapidDevelopment/Index")
+                //});
+                //developMenu.children.Add(new Menu
+                //{
+                //    text = "数据库连接管理",
+                //    icon = "fa fa-circle-o",
+                //    url = GetUrl("~/Base_SysManage/Base_DatabaseLink/Index")
+                //});
                 developMenu.children.Add(new Menu
                 {
                     text = "UMEditor Demo",
@@ -125,12 +125,12 @@ namespace Coldairarrow.Business.Base_SysManage
                     icon = "fa fa-circle-o",
                     url = GetUrl("~/Base_SysManage/Base_Department/Index")
                 });
-                developMenu.children.Add(new Menu
-                {
-                    text = "API签名Demo",
-                    icon = "fa fa-circle-o",
-                    url = GetUrl("~/Demo/ApiSignDemo")
-                });
+                //developMenu.children.Add(new Menu
+                //{
+                //    text = "API签名Demo",
+                //    icon = "fa fa-circle-o",
+                //    url = GetUrl("~/Demo/ApiSignDemo")
+                //});
             }
 
             _allMenu = menus;

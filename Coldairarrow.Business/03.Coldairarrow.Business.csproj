@@ -183,6 +183,7 @@
     <Compile Include="Business\Base_SysManage\DataPermission.cs" />
     <Compile Include="Business\Base_SysManage\SystemMenuManage.cs" />
     <Compile Include="Business\Operator.cs" />
+    <Compile Include="Business\PayRecord\Dev_PayRecordBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectTypeBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IBase_AppSecretBusiness.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Business\Base_SysManage\UrlPermissionManage.cs" />
     <Compile Include="IBusiness\Base_SysManage\IHomeBusiness.cs" />
     <Compile Include="IBusiness\IOperator.cs" />
+    <Compile Include="IBusiness\PayRecord\IDev_PayRecordBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectTypeBusiness.cs" />
     <Compile Include="Logger\BaseTarget.cs" />
