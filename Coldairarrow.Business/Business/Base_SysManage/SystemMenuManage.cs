@@ -83,12 +83,12 @@ namespace Coldairarrow.Business.Base_SysManage
                     children = new List<Menu>()
                 };
                 menus.Add(developMenu);
-                //developMenu.children.Add(new Menu
-                //{
-                //    text = "代码生成",
-                //    icon = "fa fa-circle-o",
-                //    url = GetUrl("~/Base_SysManage/RapidDevelopment/Index")
-                //});
+                developMenu.children.Add(new Menu
+                {
+                    text = "代码生成",
+                    icon = "fa fa-circle-o",
+                    url = GetUrl("~/Base_SysManage/RapidDevelopment/Index")
+                });
                 //developMenu.children.Add(new Menu
                 //{
                 //    text = "数据库连接管理",

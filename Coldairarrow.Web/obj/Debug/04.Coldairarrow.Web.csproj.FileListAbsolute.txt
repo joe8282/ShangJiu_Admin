@@ -138,6 +138,8 @@ E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Web\obj\Debug\04.Coldair
 E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Web\obj\Debug\04.Coldairarrow.Web.csproj.CopyComplete
 E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Web\obj\Debug\Coldairarrow.Web.dll
 E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Web\obj\Debug\Coldairarrow.Web.pdb
+E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\04.Coldairarrow.Web.csprojAssemblyReference.cache
+E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\04.Coldairarrow.Web.csproj.CoreCompileInputs.cache
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\Coldairarrow.Web.dll.config
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\Coldairarrow.Web.dll
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\Coldairarrow.Web.pdb
@@ -273,8 +275,6 @@ E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\Elasticsearch.
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\StackExchange.Redis.xml
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\zxing.pdb
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\bin\zxing.xml
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\04.Coldairarrow.Web.csprojAssemblyReference.cache
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\04.Coldairarrow.Web.csproj.CoreCompileInputs.cache
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\04.Coldairarrow.Web.csproj.CopyComplete
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\Coldairarrow.Web.dll
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Web\obj\Debug\Coldairarrow.Web.pdb

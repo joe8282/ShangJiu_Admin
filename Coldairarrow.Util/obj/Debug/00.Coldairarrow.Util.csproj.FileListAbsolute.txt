@@ -179,7 +179,6 @@ E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\bin\Debug\zxing.p
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\bin\Debug\zxing.xml
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\bin\Debug\zxing.presentation.pdb
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\bin\Debug\zxing.presentation.xml
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csprojAssemblyReference.cache
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csproj.CoreCompileInputs.cache
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csproj.CopyComplete
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\Coldairarrow.Util.dll

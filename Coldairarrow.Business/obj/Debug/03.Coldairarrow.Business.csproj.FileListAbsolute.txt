@@ -92,6 +92,8 @@ E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Business\obj\Debug\03.Co
 E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Business\obj\Debug\03.Coldairarrow.Business.csproj.CopyComplete
 E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Business\obj\Debug\Coldairarrow.Business.dll
 E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Business\obj\Debug\Coldairarrow.Business.pdb
+E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\03.Coldairarrow.Business.csprojAssemblyReference.cache
+E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\03.Coldairarrow.Business.csproj.CoreCompileInputs.cache
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\Coldairarrow.Business.dll.config
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\Coldairarrow.Business.dll
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\Coldairarrow.Business.pdb
@@ -181,8 +183,6 @@ E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\Sys
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\StackExchange.Redis.xml
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\zxing.pdb
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\bin\Debug\zxing.xml
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\03.Coldairarrow.Business.csprojAssemblyReference.cache
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\03.Coldairarrow.Business.csproj.CoreCompileInputs.cache
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\03.Coldairarrow.Business.csproj.CopyComplete
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\Coldairarrow.Business.dll
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Business\obj\Debug\Coldairarrow.Business.pdb

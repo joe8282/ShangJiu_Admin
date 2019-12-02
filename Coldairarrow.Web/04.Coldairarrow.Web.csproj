@@ -1248,6 +1248,8 @@
     <Compile Include="Areas\ProjectManage\Controllers\Dev_ProjectController.cs" />
     <Compile Include="Areas\ProjectManage\Controllers\Dev_ProjectTypeController.cs" />
     <Compile Include="Areas\ProjectManage\ProjectManageAreaRegistration.cs" />
+    <Compile Include="Areas\SystemManage\Controllers\Dev_InfoController.cs" />
+    <Compile Include="Areas\SystemManage\SystemManageAreaRegistration.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -1295,6 +1297,9 @@
     <Content Include="Areas\PayRecord\Views\Dev_PayRecord\Form.cshtml" />
     <Content Include="Areas\PayRecord\Views\Dev_PayRecord\Index.cshtml" />
     <Content Include="Areas\PayRecord\Views\web.config" />
+    <Content Include="Areas\SystemManage\Views\Dev_Info\Form.cshtml" />
+    <Content Include="Areas\SystemManage\Views\Dev_Info\Index.cshtml" />
+    <Content Include="Areas\SystemManage\Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
