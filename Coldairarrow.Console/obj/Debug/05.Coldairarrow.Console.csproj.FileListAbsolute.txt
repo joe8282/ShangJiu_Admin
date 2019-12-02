@@ -1,3 +1,0 @@
-E:\开发资源\Colder.Fx.Net.AdminLTE\src\Coldairarrow.Console\obj\Debug\05.Coldairarrow.Console.csprojResolveAssemblyReference.cache
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Console\obj\Debug\05.Coldairarrow.Console.csprojAssemblyReference.cache
-E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Console\obj\Debug\05.Coldairarrow.Console.csproj.CoreCompileInputs.cache
