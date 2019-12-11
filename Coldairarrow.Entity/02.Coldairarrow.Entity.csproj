@@ -150,10 +150,14 @@
     <Compile Include="Base_SysManage\EnumType.cs" />
     <Compile Include="Help\Dev_Help.cs" />
     <Compile Include="Help\Dev_HelpType.cs" />
+    <Compile Include="OtherManage\Dev_Award.cs" />
+    <Compile Include="OtherManage\Dev_Collection.cs" />
+    <Compile Include="OtherManage\Dev_Comment.cs" />
     <Compile Include="PayRecord\Dev_PayRecord.cs" />
     <Compile Include="ProjectManage\Dev_Project.cs" />
     <Compile Include="ProjectManage\Dev_ProjectType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shop\Dev_Shop.cs" />
     <Compile Include="SystemManage\Dev_Info.cs" />
     <Compile Include="SystemManage\Dev_Type.cs" />
   </ItemGroup>

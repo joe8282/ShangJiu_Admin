@@ -26,10 +26,13 @@
                 <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
                     
-                    <option value="TypeId">所属类型</option>
-                    <option value="HelpTitle">标题</option>
-                    <option value="HelpContent">内容</option>
-                    <option value="HelpPic">主图</option>
+                    <option value="CommentType">所属类型</option>
+                    <option value="SubjectId">所属主题ID</option>
+                    <option value="SubjectTitle">所属主题标题</option>
+                    <option value="ParentId">所属上级ID</option>
+                    <option value="CommentContent">内容</option>
+                    <option value="CommentPic">图片</option>
+                    <option value="UserId">创建人</option>
                 </select>
                 <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
             </div>
@@ -57,7 +60,7 @@
     //初始化表格
     function initTable() {
         $table.bootstrapTable({
-            url: '/Help/Dev_Help/GetDataList',
+            url: '/OtherManage/Dev_Comment/GetDataList',
             idField: 'Id',
             method: 'post',
             contentType: 'application/x-www-form-urlencoded',
@@ -70,15 +73,13 @@
             pageList: [10, 30, 60, 100],
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
-                { title: '所属类型', field: 'TypeId', width: '5%' },
-                { title: '标题', field: 'HelpTitle', width: '5%' },
-                { title: '内容', field: 'HelpContent', width: '5%' },
-                { title: '主图', field: 'HelpPic', width: '5%' },
-                { title: '浏览数量', field: 'ClickNum', width: '5%' },
-                { title: '评论数量', field: 'CommentNum', width: '5%' },
-                { title: '收藏数量', field: 'CollectNum', width: '5%' },
-                { title: '点赞数量', field: 'GoodNum', width: '5%' },
-                { title: '打赏累计', field: 'RewardFee', width: '5%' },
+                { title: '所属类型', field: 'CommentType', width: '5%' },
+                { title: '所属主题ID', field: 'SubjectId', width: '5%' },
+                { title: '所属主题标题', field: 'SubjectTitle', width: '5%' },
+                { title: '所属上级ID', field: 'ParentId', width: '5%' },
+                { title: '内容', field: 'CommentContent', width: '5%' },
+                { title: '图片', field: 'CommentPic', width: '5%' },
+                { title: '创建人', field: 'UserId', width: '5%' },
                 { title: '创建时间', field: 'CreateTime', width: '5%' },
                 { title: '状态', field: 'Status', width: '5%' },
                 { title: '排序', field: 'Sort', width: '5%' },
@@ -113,7 +114,7 @@
             title: title,
             btn: ['确定', '取消'],
             height:'80%',
-            url: '/Help/Dev_Help/Form?id={0}'.format(id || ''),
+            url: '/OtherManage/Dev_Comment/Form?id={0}'.format(id || ''),
             yes: function (window, body) {
                 window.submitForm();
             }
@@ -140,7 +141,7 @@
             }
 
             loading();
-            $.postJSON('/Help/Dev_Help/DeleteData', { ids: JSON.stringify(ids) }, function (resJson) {
+            $.postJSON('/OtherManage/Dev_Comment/DeleteData', { ids: JSON.stringify(ids) }, function (resJson) {
                 loading(false);
 
                 if (resJson.Success) {

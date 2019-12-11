@@ -185,9 +185,13 @@
     <Compile Include="Business\Help\Dev_HelpBusiness.cs" />
     <Compile Include="Business\Help\Dev_HelpTypeBusiness.cs" />
     <Compile Include="Business\Operator.cs" />
+    <Compile Include="Business\OtherManage\Dev_AwardBusiness.cs" />
+    <Compile Include="Business\OtherManage\Dev_CollectionBusiness.cs" />
+    <Compile Include="Business\OtherManage\Dev_CommentBusiness.cs" />
     <Compile Include="Business\PayRecord\Dev_PayRecordBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectTypeBusiness.cs" />
+    <Compile Include="Business\Shop\Dev_ShopBusiness.cs" />
     <Compile Include="Business\SystemManage\Dev_InfoBusiness.cs" />
     <Compile Include="Business\SystemManage\Dev_TypeBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IBase_AppSecretBusiness.cs" />
@@ -215,9 +219,13 @@
     <Compile Include="Business\Base_SysManage\UrlPermissionManage.cs" />
     <Compile Include="IBusiness\Base_SysManage\IHomeBusiness.cs" />
     <Compile Include="IBusiness\IOperator.cs" />
+    <Compile Include="IBusiness\OtherManage\IDev_AwardBusiness.cs" />
+    <Compile Include="IBusiness\OtherManage\IDev_CollectionBusiness.cs" />
+    <Compile Include="IBusiness\OtherManage\IDev_CommentBusiness.cs" />
     <Compile Include="IBusiness\PayRecord\IDev_PayRecordBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectTypeBusiness.cs" />
+    <Compile Include="IBusiness\Shop\IDev_ShopBusiness.cs" />
     <Compile Include="IBusiness\SystemManage\IDev_InfoBusiness.cs" />
     <Compile Include="IBusiness\SystemManage\IDev_TypeBusiness.cs" />
     <Compile Include="Logger\BaseTarget.cs" />

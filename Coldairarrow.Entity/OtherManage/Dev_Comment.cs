@@ -2,13 +2,13 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Coldairarrow.Entity.Help
+namespace Coldairarrow.Entity.OtherManage
 {
     /// <summary>
-    /// 帮助中心
+    /// 商号说说、商号问答、商号留言、商讯评论、帮助评论
     /// </summary>
-    [Table("Dev_Help")]
-    public class Dev_Help
+    [Table("Dev_Comment")]
+    public class Dev_Comment
     {
 
         /// <summary>
@@ -20,47 +20,37 @@ namespace Coldairarrow.Entity.Help
         /// <summary>
         /// 所属类型
         /// </summary>
-        public String TypeId { get; set; }
+        public String CommentType { get; set; }
 
         /// <summary>
-        /// 标题
+        /// 所属主题ID
         /// </summary>
-        public String HelpTitle { get; set; }
+        public String SubjectId { get; set; }
+
+        /// <summary>
+        /// 所属主题标题
+        /// </summary>
+        public String SubjectTitle { get; set; }
+
+        /// <summary>
+        /// 所属上级ID
+        /// </summary>
+        public String ParentId { get; set; }
 
         /// <summary>
         /// 内容
         /// </summary>
-        public String HelpContent { get; set; }
+        public String CommentContent { get; set; }
 
         /// <summary>
-        /// 主图
+        /// 图片
         /// </summary>
-        public String HelpPic { get; set; }
+        public String CommentPic { get; set; }
 
         /// <summary>
-        /// 浏览数量
+        /// 创建人
         /// </summary>
-        public Int32? ClickNum { get; set; }
-
-        /// <summary>
-        /// 评论数量
-        /// </summary>
-        public Int32? CommentNum { get; set; }
-
-        /// <summary>
-        /// 收藏数量
-        /// </summary>
-        public Int32? CollectNum { get; set; }
-
-        /// <summary>
-        /// 点赞数量
-        /// </summary>
-        public Int32? GoodNum { get; set; }
-
-        /// <summary>
-        /// 打赏累计
-        /// </summary>
-        public Double? RewardFee { get; set; }
+        public String UserId { get; set; }
 
         /// <summary>
         /// 创建时间

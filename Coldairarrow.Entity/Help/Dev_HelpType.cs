@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Coldairarrow.Entity.Help
 {
     /// <summary>
-    /// Dev_HelpType
+    /// 帮助中心分类
     /// </summary>
     [Table("Dev_HelpType")]
     public class Dev_HelpType

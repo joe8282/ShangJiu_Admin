@@ -26,10 +26,26 @@
                 <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
                     
-                    <option value="TypeId">所属类型</option>
-                    <option value="HelpTitle">标题</option>
-                    <option value="HelpContent">内容</option>
-                    <option value="HelpPic">主图</option>
+                    <option value="ShopTitle">商号标题</option>
+                    <option value="ShopPic">商号主图</option>
+                    <option value="ShopRemark">商号摘要</option>
+                    <option value="ShopContent">商号介绍</option>
+                    <option value="UserId">创建人</option>
+                    <option value="TypeId">商号类型</option>
+                    <option value="ClassId">商号行业</option>
+                    <option value="ChannelId">所有者身份</option>
+                    <option value="Provice">省份</option>
+                    <option value="City">城市</option>
+                    <option value="Area">区县</option>
+                    <option value="Contact">联系人</option>
+                    <option value="ContactTel">联系电话</option>
+                    <option value="ContactAddress">经营地址</option>
+                    <option value="JoinWay">加入方式</option>
+                    <option value="JoinDemand">加入要求</option>
+                    <option value="IsAd">是否推广</option>
+                    <option value="IsTop">是否置顶</option>
+                    <option value="IsRefresh">是否自刷</option>
+                    <option value="HasReward">有无红包</option>
                 </select>
                 <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
             </div>
@@ -57,7 +73,7 @@
     //初始化表格
     function initTable() {
         $table.bootstrapTable({
-            url: '/Help/Dev_Help/GetDataList',
+            url: '/Shop/Dev_Shop/GetDataList',
             idField: 'Id',
             method: 'post',
             contentType: 'application/x-www-form-urlencoded',
@@ -70,17 +86,48 @@
             pageList: [10, 30, 60, 100],
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
-                { title: '所属类型', field: 'TypeId', width: '5%' },
-                { title: '标题', field: 'HelpTitle', width: '5%' },
-                { title: '内容', field: 'HelpContent', width: '5%' },
-                { title: '主图', field: 'HelpPic', width: '5%' },
+                { title: '商号标题', field: 'ShopTitle', width: '5%' },
+                { title: '商号主图', field: 'ShopPic', width: '5%' },
+                { title: '商号摘要', field: 'ShopRemark', width: '5%' },
+                { title: '商号介绍', field: 'ShopContent', width: '5%' },
+                { title: '创建人', field: 'UserId', width: '5%' },
+                { title: '商号类型', field: 'TypeId', width: '5%' },
+                { title: '商号行业', field: 'ClassId', width: '5%' },
+                { title: '所有者身份', field: 'ChannelId', width: '5%' },
+                { title: '省份', field: 'Provice', width: '5%' },
+                { title: '城市', field: 'City', width: '5%' },
+                { title: '区县', field: 'Area', width: '5%' },
+                { title: '联系人', field: 'Contact', width: '5%' },
+                { title: '联系电话', field: 'ContactTel', width: '5%' },
+                { title: '经营地址', field: 'ContactAddress', width: '5%' },
+                { title: '加入方式', field: 'JoinWay', width: '5%' },
+                { title: '加入要求', field: 'JoinDemand', width: '5%' },
+                { title: '加入费用（按次）', field: 'JoinFeeOnce', width: '5%' },
+                { title: '加入费用（按月）', field: 'JoinFeeMonth', width: '5%' },
+                { title: '加入费用（按年）', field: 'JoinFeeYear', width: '5%' },
+                { title: '加入费用（不限）', field: 'JoinFeeUnlimited', width: '5%' },
+                { title: '是否推广', field: 'IsAd', width: '5%' },
+                { title: '是否置顶', field: 'IsTop', width: '5%' },
+                { title: '是否自刷', field: 'IsRefresh', width: '5%' },
+                { title: '有无红包', field: 'HasReward', width: '5%' },
+                { title: '推广支出', field: 'AdFee', width: '5%' },
+                { title: '红包支出', field: 'RewardFee', width: '5%' },
+                { title: '成员数量', field: 'MemberNum', width: '5%' },
+                { title: '商讯数量', field: 'ProductNum', width: '5%' },
+                { title: '商链数量', field: 'LinkNum', width: '5%' },
+                { title: '说说数量', field: 'ChatNum', width: '5%' },
+                { title: '问答数量', field: 'AskNum', width: '5%' },
+                { title: '留言数量', field: 'MessageNum', width: '5%' },
+                { title: '代理数量', field: 'AgentNum', width: '5%' },
+                { title: '托客数量', field: 'CustomerNum', width: '5%' },
+                { title: '收费累计', field: 'GetPayFee', width: '5%' },
+                { title: '打赏累计', field: 'GetRewardFee', width: '5%' },
                 { title: '浏览数量', field: 'ClickNum', width: '5%' },
-                { title: '评论数量', field: 'CommentNum', width: '5%' },
-                { title: '收藏数量', field: 'CollectNum', width: '5%' },
+                { title: '关注数量', field: 'CollectionNum', width: '5%' },
                 { title: '点赞数量', field: 'GoodNum', width: '5%' },
-                { title: '打赏累计', field: 'RewardFee', width: '5%' },
                 { title: '创建时间', field: 'CreateTime', width: '5%' },
                 { title: '状态', field: 'Status', width: '5%' },
+                { title: '操作时间', field: 'StatusTime', width: '5%' },
                 { title: '排序', field: 'Sort', width: '5%' },
                 {
                     title: '操作', field: '_', width: '80%', formatter: function (value, row) {
@@ -113,7 +160,7 @@
             title: title,
             btn: ['确定', '取消'],
             height:'80%',
-            url: '/Help/Dev_Help/Form?id={0}'.format(id || ''),
+            url: '/Shop/Dev_Shop/Form?id={0}'.format(id || ''),
             yes: function (window, body) {
                 window.submitForm();
             }
@@ -140,7 +187,7 @@
             }
 
             loading();
-            $.postJSON('/Help/Dev_Help/DeleteData', { ids: JSON.stringify(ids) }, function (resJson) {
+            $.postJSON('/Shop/Dev_Shop/DeleteData', { ids: JSON.stringify(ids) }, function (resJson) {
                 loading(false);
 
                 if (resJson.Success) {
