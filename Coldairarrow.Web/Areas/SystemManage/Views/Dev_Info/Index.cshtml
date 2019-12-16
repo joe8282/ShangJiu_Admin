@@ -20,18 +20,39 @@
         </div>
     </div>
     <div class="fx-wrapper">
-        <form class="form-inline" id="searchForm">
+        <form class="form-inline form-group-sm" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>标题</label>
+                <input type="text" class="form-control input-sm" name="infoTitle">
+            </div>
+            <div class="form-group">
+                <label>用户名</label>
+                <input name="receiverName" type="text" class="form-control input-sm">
+            </div>
+            <br />
+            <div class="form-group">
+                <label>消息类型</label>
+                <select class="selectpicker" name="infoType" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="InfoType">消息类型</option>
-                    <option value="UserId">接收人</option>
-                    <option value="InfoTitle">消息标题</option>
-                    <option value="InfoContent">消息内容</option>
+                    <option value="系统消息">系统消息</option>
+                    <option value="商号消息">商号消息</option>
+                    <option value="商讯消息">商讯消息</option>
+                    <option value="其他消息">其他消息</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+            </div>
+            <div class="form-group">
+                <label>消息状态</label>
+                <select class="selectpicker" name="status" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">未读</option>
+                    <option value="2">已读</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>创建时间</label>
+                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -54,6 +75,16 @@
         bindEvent();
     });
 
+    //绑定事件
+    function bindEvent() {
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+        });
+    }
+
     //初始化表格
     function initTable() {
         $table.bootstrapTable({
@@ -71,11 +102,20 @@
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
                 { title: '消息类型', field: 'InfoType', width: '5%' },
-                { title: '接收人', field: 'UserId', width: '5%' },
+                { title: '用户名', field: 'UserName', width: '5%' },
+                { title: '真实姓名', field: 'RealName', width: '5%' },
                 { title: '消息标题', field: 'InfoTitle', width: '5%' },
                 { title: '消息内容', field: 'InfoContent', width: '5%' },
                 { title: '排序', field: 'Sort', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
+                {
+                    title: '状态', field: 'Status', width: '5%' , align: "center",
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (cellvalue == '1') {
+                            return "<span class=\"label label-success\">未读</span>";
+                        } else {
+                            return "<span class=\"label label-success\">已读</span>";
+                        }
+                    }},
                 { title: '创建时间', field: 'CreateTime', width: '5%' },
                 {
                     title: '操作', field: '_', width: '80%', formatter: function (value, row) {
@@ -90,15 +130,9 @@
             queryParams: function (params) {
                 var searchParams = $('#searchForm').getValues();
                 $.extend(params, searchParams);
-
                 return params;
             }
         });
-    }
-
-    //绑定事件
-    function bindEvent() {
-
     }
 
     //打开表单

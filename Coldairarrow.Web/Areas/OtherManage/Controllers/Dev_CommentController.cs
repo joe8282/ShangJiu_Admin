@@ -1,6 +1,7 @@
 using Coldairarrow.Business.OtherManage;
 using Coldairarrow.Entity.OtherManage;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.OtherManage.Controllers
@@ -42,9 +43,16 @@ namespace Coldairarrow.Web.Areas.OtherManage.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList(Pagination pagination,
+            string userName,
+            string commentType,
+            int? status,
+            string subjectTitle,
+            string commentContent,
+            DateTime? startTime,
+            DateTime? endTime)
         {
-            var dataList = _dev_CommentBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_CommentBus.GetDataList(pagination, userName, commentType, status, subjectTitle, commentContent, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

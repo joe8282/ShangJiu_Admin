@@ -50,17 +50,17 @@ namespace Coldairarrow.Entity.OtherManage
         /// <summary>
         /// 创建时间
         /// </summary>
-        public String CreateTime { get; set; }
+        public DateTime? CreateTime { get; set; }
 
         /// <summary>
         /// 状态
         /// </summary>
-        public String Status { get; set; }
+        public Int32? Status { get; set; }
 
         /// <summary>
         /// 排序
         /// </summary>
-        public String Sort { get; set; }
+        public Int32? Sort { get; set; }
 
     }
 }
