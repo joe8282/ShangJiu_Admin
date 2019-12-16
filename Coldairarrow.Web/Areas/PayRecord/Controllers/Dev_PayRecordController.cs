@@ -1,6 +1,7 @@
 using Coldairarrow.Business.PayRecord;
 using Coldairarrow.Entity.PayRecord;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.PayRecord.Controllers
@@ -42,9 +43,9 @@ namespace Coldairarrow.Web.Areas.PayRecord.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword,string RecordType)
+        public ActionResult GetDataList(Pagination pagination,string RecordType,string PayWay,int? Status,string TradeNo,string ShopUserrId,string UserName, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_PayRecordBus.GetDataList(pagination, condition, keyword, RecordType);
+            var dataList = _dev_PayRecordBus.GetDataList(pagination, false,  RecordType,PayWay,Status,TradeNo,ShopUserrId,UserName,startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

@@ -29,6 +29,29 @@
                     <option value="商讯付款">商讯付款</option>
                     <option value="人工付款">人工付款</option>
                 </select>
+                <label>付款方式</label>
+                <select class="selectpicker" id="PayWay" name="PayWay" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="余额支付">余额支付</option>
+                    <option value="微信支付">微信支付</option>
+                    <option value="支付宝支付">支付宝支付</option>
+                </select>
+                <label>状态</label>
+                <select class="selectpicker" id="Status" name="Status" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">待付款</option>
+                    <option value="2">已支付</option>
+                </select>
+                <label>交易号</label>
+                <input type="text" class="form-control input-sm" name="TradeNo" id="TradeNo" placeholder="交易号">
+                <label>付款商号创建人</label>
+                <input type="text" class="form-control input-sm" name="ShopUserrId" id="ShopUserrId" placeholder="付款商号创建人">
+                <label>付款人</label>
+                <input type="text" class="form-control input-sm" name="UserName" id="UserName" placeholder="付款人">
+                <label>时间</label>
+                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -112,7 +135,6 @@
             queryParams: function (params) {
                 var searchParams = $('#searchForm').getValues();
                 $.extend(params, searchParams);
-
                 return params;
             }
         });
@@ -120,7 +142,12 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+        });
     }
 
     //打开表单

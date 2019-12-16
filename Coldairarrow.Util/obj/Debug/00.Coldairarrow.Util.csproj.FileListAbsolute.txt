@@ -276,3 +276,4 @@ E:\SJGIT\Coldairarrow.Util\bin\Debug\zxing.presentation.pdb
 E:\SJGIT\Coldairarrow.Util\bin\Debug\zxing.presentation.xml
 E:\SJGIT\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csproj.CoreCompileInputs.cache
 E:\SJGIT\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csproj.CopyComplete
+E:\SJGIT\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csprojAssemblyReference.cache

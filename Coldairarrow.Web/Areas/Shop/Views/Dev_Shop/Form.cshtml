@@ -1,0 +1,358 @@
+@using Coldairarrow.Entity.Shop;
+@using Coldairarrow.Util;
+
+@{
+    Layout = "~/Views/Shared/_Layout_Form.cshtml";
+
+    var obj = (Dev_Shop)Model;
+    var objStr = Html.Raw(obj.ToJson());
+}
+<div style="padding:15px;padding-right:45px;">
+    <form id="form" class="form-horizontal" role="form">
+        
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商号标题</label>
+            <div class="col-sm-5">
+                <input name="ShopTitle" value="@obj.ShopTitle" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商号主图</label>
+            <div class="col-sm-5">
+                <input name="ShopPic" value="@obj.ShopPic" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商号摘要</label>
+            <div class="col-sm-5">
+                <input name="ShopRemark" value="@obj.ShopRemark" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商号介绍</label>
+            <div class="col-sm-5">
+                <input name="ShopContent" value="@obj.ShopContent" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">创建人</label>
+            <div class="col-sm-5">
+                <input name="UserId" value="@obj.UserId" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商号类型</label>
+            <div class="col-sm-5">
+                <input name="TypeId" value="@obj.TypeId" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商号行业</label>
+            <div class="col-sm-5">
+                <input name="ClassId" value="@obj.ClassId" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">所有者身份</label>
+            <div class="col-sm-5">
+                <input name="ChannelId" value="@obj.ChannelId" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">省份</label>
+            <div class="col-sm-5">
+                <input name="Provice" value="@obj.Provice" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">城市</label>
+            <div class="col-sm-5">
+                <input name="City" value="@obj.City" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">区县</label>
+            <div class="col-sm-5">
+                <input name="Area" value="@obj.Area" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">联系人</label>
+            <div class="col-sm-5">
+                <input name="Contact" value="@obj.Contact" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">联系电话</label>
+            <div class="col-sm-5">
+                <input name="ContactTel" value="@obj.ContactTel" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">经营地址</label>
+            <div class="col-sm-5">
+                <input name="ContactAddress" value="@obj.ContactAddress" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">加入方式</label>
+            <div class="col-sm-5">
+                <input name="JoinWay" value="@obj.JoinWay" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">加入要求</label>
+            <div class="col-sm-5">
+                <input name="JoinDemand" value="@obj.JoinDemand" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">加入费用（按次）</label>
+            <div class="col-sm-5">
+                <input name="JoinFeeOnce" value="@obj.JoinFeeOnce" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">加入费用（按月）</label>
+            <div class="col-sm-5">
+                <input name="JoinFeeMonth" value="@obj.JoinFeeMonth" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">加入费用（按年）</label>
+            <div class="col-sm-5">
+                <input name="JoinFeeYear" value="@obj.JoinFeeYear" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">加入费用（不限）</label>
+            <div class="col-sm-5">
+                <input name="JoinFeeUnlimited" value="@obj.JoinFeeUnlimited" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">是否推广</label>
+            <div class="col-sm-5">
+                <input name="IsAd" value="@obj.IsAd" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">是否置顶</label>
+            <div class="col-sm-5">
+                <input name="IsTop" value="@obj.IsTop" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">是否自刷</label>
+            <div class="col-sm-5">
+                <input name="IsRefresh" value="@obj.IsRefresh" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">有无红包</label>
+            <div class="col-sm-5">
+                <input name="HasReward" value="@obj.HasReward" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">推广支出</label>
+            <div class="col-sm-5">
+                <input name="AdFee" value="@obj.AdFee" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">红包支出</label>
+            <div class="col-sm-5">
+                <input name="RewardFee" value="@obj.RewardFee" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">成员数量</label>
+            <div class="col-sm-5">
+                <input name="MemberNum" value="@obj.MemberNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商讯数量</label>
+            <div class="col-sm-5">
+                <input name="ProductNum" value="@obj.ProductNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">商链数量</label>
+            <div class="col-sm-5">
+                <input name="LinkNum" value="@obj.LinkNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">说说数量</label>
+            <div class="col-sm-5">
+                <input name="ChatNum" value="@obj.ChatNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">问答数量</label>
+            <div class="col-sm-5">
+                <input name="AskNum" value="@obj.AskNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">留言数量</label>
+            <div class="col-sm-5">
+                <input name="MessageNum" value="@obj.MessageNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">代理数量</label>
+            <div class="col-sm-5">
+                <input name="AgentNum" value="@obj.AgentNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">托客数量</label>
+            <div class="col-sm-5">
+                <input name="CustomerNum" value="@obj.CustomerNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">收费累计</label>
+            <div class="col-sm-5">
+                <input name="GetPayFee" value="@obj.GetPayFee" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">打赏累计</label>
+            <div class="col-sm-5">
+                <input name="GetRewardFee" value="@obj.GetRewardFee" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">浏览数量</label>
+            <div class="col-sm-5">
+                <input name="ClickNum" value="@obj.ClickNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">关注数量</label>
+            <div class="col-sm-5">
+                <input name="CollectionNum" value="@obj.CollectionNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">点赞数量</label>
+            <div class="col-sm-5">
+                <input name="GoodNum" value="@obj.GoodNum" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">创建时间</label>
+            <div class="col-sm-5">
+                <input name="CreateTime" value="@obj.CreateTime" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">状态</label>
+            <div class="col-sm-5">
+                <input name="Status" value="@obj.Status" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">操作时间</label>
+            <div class="col-sm-5">
+                <input name="StatusTime" value="@obj.StatusTime" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-sm-2 control-label">排序</label>
+            <div class="col-sm-5">
+                <input name="Sort" value="@obj.Sort" type="text" class="form-control" required>
+                <div class="help-block with-errors"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button id="submit" type="submit" class="hidden">提交</button>
+        </div>
+    </form>
+</div>
+<script>
+    var theEntity = @objStr;
+
+    $(function () {
+        initEvent();
+    });
+
+    //事件绑定
+    function initEvent() {
+        //表单校验
+        $('#form').validator().on('submit', function (e) {
+            //校验成功
+            if (!e.isDefaultPrevented()) {
+                e.preventDefault();
+
+                var values = $('#form').getValues();
+                
+                $.extend(theEntity, values);
+                loading();
+                $.postJSON('/Shop/Dev_Shop/SaveData', theEntity, function (resJson) {
+                    loading(false);
+
+                    if (resJson.Success) {
+                        parent.$('#dataTable').bootstrapTable('refresh');
+                        parent.dialogSuccess();
+                        dialogClose();
+                    }
+                    else {
+                        dialogError(resJson.Msg);
+                    }
+                });
+            }
+        })
+    }
+
+    //提交表单
+    function submitForm() {
+        $('#submit').trigger('click');
+    }
+</script>
