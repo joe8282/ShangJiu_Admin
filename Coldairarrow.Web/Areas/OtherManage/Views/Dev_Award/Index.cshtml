@@ -20,22 +20,38 @@
         </div>
     </div>
     <div class="fx-wrapper">
-        <form class="form-inline" id="searchForm">
+        <form class="form-inline form-group-sm" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>所属类型</label>
+                <select class="selectpicker" name="awardType" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="AwardType">所属类型</option>
-                    <option value="SubjectId">所属主题ID</option>
-                    <option value="SubjectTitle">所属主题标题</option>
-                    <option value="TradeNo">交易号</option>
-                    <option value="UserId">创建人</option>
-                    <option value="CreateTime">创建时间</option>
-                    <option value="Status">状态</option>
-                    <option value="Sort">排序</option>
+                    <option value="商号打赏">商号打赏</option>
+                    <option value="商号关注">商讯打赏</option>
+                    <option value="帮助打赏">帮助打赏</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+            </div>
+            <div class="form-group">
+                <label>状态</label>
+                <select class="selectpicker" name="status" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">已支付</option>
+                    <option value="2">未支付</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>所属主题标题</label>
+                <input type="text" class="form-control input-sm" name="subjectTitle">
+            </div>
+            <br />
+            <div class="form-group">
+                <label>创建人</label>
+                <input name="userName" type="text" class="form-control input-sm">
+            </div>
+            <div class="form-group">
+                <label>创建时间</label>
+                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -75,13 +91,23 @@
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
                 { title: '所属类型', field: 'AwardType', width: '5%' },
-                { title: '所属主题ID', field: 'SubjectId', width: '5%' },
+                { title: '所属主题ID', field: 'SubjectId', width: '5%', visible: false },
                 { title: '所属主题标题', field: 'SubjectTitle', width: '5%' },
                 { title: '交易号', field: 'TradeNo', width: '5%' },
                 { title: '打赏金额', field: 'AwardFee', width: '5%' },
-                { title: '创建人', field: 'UserId', width: '5%' },
+                { title: '用户名', field: 'UserName', width: '5%' },
+                { title: '真实姓名', field: 'RealName', width: '5%' },
                 { title: '创建时间', field: 'CreateTime', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
+                {
+                    title: '状态', field: 'Status', width: '5%', align: "center",
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (cellvalue == '1') {
+                            return "<span class=\"label label-success\">已支付</span>";
+                        } else {
+                            return "<span class=\"label label-success\">未支付</span>";
+                        }
+                    }
+                },
                 { title: '排序', field: 'Sort', width: '5%' },
                 {
                     title: '操作', field: '_', width: '80%', formatter: function (value, row) {
@@ -104,7 +130,12 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+        });
     }
 
     //打开表单
