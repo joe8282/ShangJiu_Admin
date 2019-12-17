@@ -42,9 +42,9 @@ namespace Coldairarrow.Web.Areas.Shop.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList(Pagination pagination, string userId = null, string TypeId = null, string ClassId = null, string ChannelId = null, string keyword = null)
         {
-            var dataList = _dev_ShopBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_ShopBus.GetDataList(pagination, false, userId, TypeId, ClassId, ChannelId, keyword);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

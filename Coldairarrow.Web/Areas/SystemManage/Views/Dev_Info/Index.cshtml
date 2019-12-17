@@ -50,9 +50,9 @@
             </div>
             <div class="form-group">
                 <label>创建时间</label>
-                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd" class="form-control">
                 <label>~</label>
-                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -111,9 +111,9 @@
                     title: '状态', field: 'Status', width: '5%' , align: "center",
                     formatter: function (cellvalue, options, rowObject) {
                         if (cellvalue == '1') {
-                            return "<span class=\"label label-success\">未读</span>";
+                            return "<span class=\"label label-default\">未读</span>";
                         } else {
-                            return "<span class=\"label label-success\">已读</span>";
+                            return "<span class=\"label label-primary\">已读</span>";
                         }
                     }},
                 { title: '创建时间', field: 'CreateTime', width: '5%' },

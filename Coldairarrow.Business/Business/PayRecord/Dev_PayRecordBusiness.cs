@@ -12,7 +12,7 @@ namespace Coldairarrow.Business.PayRecord
 {
     public class Dev_PayRecordBusiness : BaseBusiness<Dev_PayRecord>, IDev_PayRecordBusiness, IDependency
     {
-        private IBaseBusiness<Dev_PayRecord_View> contentservice = new BaseBusiness<Dev_PayRecord_View>();
+        private IBaseBusiness<Dev_PayRecord> contentservice = new BaseBusiness<Dev_PayRecord>();
         private IBaseBusiness<Base_User> baseuserservice = new BaseBusiness<Base_User>();
 
         #region 外部接口

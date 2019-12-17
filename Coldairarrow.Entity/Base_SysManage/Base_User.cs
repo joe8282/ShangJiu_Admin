@@ -33,6 +33,11 @@ namespace Coldairarrow.Entity.Base_SysManage
         public String RealName { get; set; }
 
         /// <summary>
+        /// 手机号码
+        /// </summary>
+        public String Phone { get; set; }
+
+        /// <summary>
         /// 性别(1为男，0为女)
         /// </summary>
         public Int32? Sex { get; set; }

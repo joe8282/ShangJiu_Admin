@@ -154,7 +154,6 @@
     <Compile Include="OtherManage\Dev_Collection.cs" />
     <Compile Include="OtherManage\Dev_Comment.cs" />
     <Compile Include="PayRecord\Dev_PayRecord.cs" />
-    <Compile Include="PayRecord\Dev_PayRecord_View.cs" />
     <Compile Include="ProjectManage\Dev_Project.cs" />
     <Compile Include="ProjectManage\Dev_ProjectType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
