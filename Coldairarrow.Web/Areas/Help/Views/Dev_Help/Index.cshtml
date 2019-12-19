@@ -22,16 +22,20 @@
     <div class="fx-wrapper">
         <form class="form-inline" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>所属类型</label>
+                <select class="selectpicker" id="TypeId" name="TypeId" data-style="btn-default btn-sm" data-width="100px"></select>
+                <label>状态</label>
+                <select class="selectpicker" id="Status" name="Status" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="TypeId">所属类型</option>
-                    <option value="HelpTitle">标题</option>
-                    <option value="HelpContent">内容</option>
-                    <option value="HelpPic">主图</option>
+                    <option value="1">正常</option>
+                    <option value="2">隐藏</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+                <label>标题</label>
+                <input type="text" class="form-control input-sm" name="HelpTitle" id="HelpTitle" placeholder="标题">
+                <label>时间</label>
+                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -70,17 +74,30 @@
             pageList: [10, 30, 60, 100],
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
-                { title: '所属类型', field: 'TypeId', width: '5%' },
-                { title: '标题', field: 'HelpTitle', width: '5%' },
-                { title: '内容', field: 'HelpContent', width: '5%' },
-                { title: '主图', field: 'HelpPic', width: '5%' },
+                { title: '所属类型', field: 'Name', width: '5%' },
+                { title: '标题', field: 'HelpTitle', width: '5%', },
+                { title: '内容', field: 'HelpContent', width: '5%', visible: false },
+                { title: '主图', field: 'HelpPic', width: '5%', visible: false },
                 { title: '浏览数量', field: 'ClickNum', width: '5%' },
                 { title: '评论数量', field: 'CommentNum', width: '5%' },
                 { title: '收藏数量', field: 'CollectNum', width: '5%' },
                 { title: '点赞数量', field: 'GoodNum', width: '5%' },
                 { title: '打赏累计', field: 'RewardFee', width: '5%' },
                 { title: '创建时间', field: 'CreateTime', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
+                {
+                    title: "状态", field: 'Status', width: '5%',
+                    formatter: function (cellvalue, options, rowObject) {
+                        switch (cellvalue) {
+                            case 1:
+                                return "正常";
+                                break;
+                            case 2:
+                                return "隐藏";
+                                break;
+                            default:
+                        }
+                    }
+                },
                 { title: '排序', field: 'Sort', width: '5%' },
                 {
                     title: '操作', field: '_', width: '80%', formatter: function (value, row) {
@@ -95,7 +112,6 @@
             queryParams: function (params) {
                 var searchParams = $('#searchForm').getValues();
                 $.extend(params, searchParams);
-
                 return params;
             }
         });
@@ -103,6 +119,18 @@
 
     //绑定事件
     function bindEvent() {
+        $('#TypeId').selectpicker({
+            url: '/Help/Dev_HelpType/GetDataList_NoPagin',
+            valueField: 'Id',
+            textField: 'Name'
+            //pleaseSelect: false
+        });
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+        });
 
     }
 
@@ -112,7 +140,7 @@
             id: 'form',
             title: title,
             btn: ['确定', '取消'],
-            height:'80%',
+            height: '80%',
             url: '/Help/Dev_Help/Form?id={0}'.format(id || ''),
             yes: function (window, body) {
                 window.submitForm();

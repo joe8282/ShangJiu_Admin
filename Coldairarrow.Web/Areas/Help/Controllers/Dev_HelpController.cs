@@ -1,6 +1,7 @@
 using Coldairarrow.Business.Help;
 using Coldairarrow.Entity.Help;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.Help.Controllers
@@ -42,9 +43,9 @@ namespace Coldairarrow.Web.Areas.Help.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList(Pagination pagination, string TypeId, int? Status,string HelpTitle,DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_HelpBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_HelpBus.GetDataList(pagination,false, TypeId,Status,HelpTitle,startTime,endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

@@ -49,6 +49,13 @@ namespace Coldairarrow.Web.Areas.Help.Controllers
             return DataTable_Bootstrap(dataList, pagination);
         }
 
+        public ActionResult GetDataList_NoPagin(string values, string q)
+        {
+            var resList = _dev_HelpTypeBus.BuildSelectResult(values, q, "RealName", "Id");
+
+            return JsonContent(resList.ToJson());
+        }
+
         #endregion
 
         #region 提交数据

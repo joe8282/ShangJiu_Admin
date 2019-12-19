@@ -1,8 +1,10 @@
 using Coldairarrow.Entity.Help;
 using Coldairarrow.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
+using System.Linq.Expressions;
 
 namespace Coldairarrow.Business.Help
 {
@@ -10,14 +12,38 @@ namespace Coldairarrow.Business.Help
     {
         #region 外部接口
 
-        public List<Dev_Help> GetDataList(Pagination pagination, string condition, string keyword)
+        public List<Dev_HelpDTO> GetDataList(Pagination pagination, bool all, string TypeId, int? Status, string HelpTitle, DateTime? startTime, DateTime? endTime)
         {
-            var q = GetIQueryable();
-            //筛选
-            if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
-                q = q.Where($@"{condition}.Contains(@0)", keyword);
 
-            return q.GetPagination(pagination).ToList();
+            Expression<Func<Dev_Help, Dev_HelpType, Dev_HelpDTO>> select = (a, b) => new Dev_HelpDTO
+            {
+               Name=b.Name
+            };
+            select = select.BuildExtendSelectExpre();
+            var q_Dev_Help = all ? Service.GetIQueryable<Dev_Help>() : GetIQueryable();
+            var q = from a in q_Dev_Help.AsExpandable()
+                    join b in Service.GetIQueryable<Dev_HelpType>() on a.TypeId equals b.Id into ab
+                    from b in ab.DefaultIfEmpty()
+                    select @select.Invoke(a, b);
+
+            var where = LinqHelper.True<Dev_HelpDTO>();
+            if (!TypeId.IsNullOrEmpty())
+                where = where.And(x => x.TypeId == TypeId);
+            if (!Status.IsNullOrEmpty() && Status > 0)
+                where = where.And(x => x.Status == Status);
+            if (!HelpTitle.IsNullOrEmpty())
+                where = where.And(x => x.HelpTitle.Contains(HelpTitle));
+            if (!startTime.IsNullOrEmpty())
+            {
+                where = where.And(x => x.CreateTime >= startTime);
+            }
+            if (!endTime.IsNullOrEmpty())
+            {
+                where = where.And(x => x.CreateTime <= endTime);
+            }
+
+            var list = q.Where(where).GetPagination(pagination).ToList();
+            return list;
         }
 
         public Dev_Help GetTheData(string id)

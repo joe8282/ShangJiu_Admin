@@ -5,18 +5,25 @@
     Layout = "~/Views/Shared/_Layout_Form.cshtml";
 
     var obj = (Dev_Help)Model;
+  
     var objStr = Html.Raw(obj.ToJson());
 }
+<link href="~/Scripts/vendor/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" charset="utf-8" src="~/Scripts/vendor/umeditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="~/Scripts/vendor/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="~/Scripts/vendor/umeditor/lang/zh-cn/zh-cn.js"></script>
+
 <div style="padding:15px;padding-right:45px;">
     <form id="form" class="form-horizontal" role="form">
-        
+
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">所属类型</label>
-            <div class="col-sm-5">
-                <input name="TypeId" value="@obj.TypeId" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
+            <div class="col-sm-5 input-icon-group">
+                <select id="TypeId" name="TypeId" class="selectpicker form-control" data-style="btn-default btn-sm"></select>
+                @*<div class="help-block with-errors"></div>*@
             </div>
         </div>
+
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">标题</label>
             <div class="col-sm-5">
@@ -26,64 +33,35 @@
         </div>
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">内容</label>
-            <div class="col-sm-5">
-                <input name="HelpContent" value="@obj.HelpContent" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
+            <div class="col-sm-9">
+                @*<input name="HelpContent" value="@obj.HelpContent" type="text" class="form-control" required>
+        <div class="help-block with-errors"></div>*@
+                <script type="text/plain" id="HelpContent" style="width:100%;height:100%;">
+
+                </script>
             </div>
+
+           
         </div>
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">主图</label>
             <div class="col-sm-5">
-                <input name="HelpPic" value="@obj.HelpPic" type="text" class="form-control" required>
+                @*<input name="HelpPic" value="@obj.HelpPic" type="text" class="form-control" required>*@
+                <div id="HelpPic" style="width:300px;height:150px;overflow:auto"> </div>
                 <div class="help-block with-errors"></div>
+                <img id="helppicYL" style="width:150px;height:150px;overflow:auto" src="" />
             </div>
         </div>
-        <div class="form-group form-group-sm">
-            <label class="col-sm-2 control-label">浏览数量</label>
-            <div class="col-sm-5">
-                <input name="ClickNum" value="@obj.ClickNum" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label class="col-sm-2 control-label">评论数量</label>
-            <div class="col-sm-5">
-                <input name="CommentNum" value="@obj.CommentNum" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label class="col-sm-2 control-label">收藏数量</label>
-            <div class="col-sm-5">
-                <input name="CollectNum" value="@obj.CollectNum" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label class="col-sm-2 control-label">点赞数量</label>
-            <div class="col-sm-5">
-                <input name="GoodNum" value="@obj.GoodNum" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label class="col-sm-2 control-label">打赏累计</label>
-            <div class="col-sm-5">
-                <input name="RewardFee" value="@obj.RewardFee" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
-        <div class="form-group form-group-sm">
-            <label class="col-sm-2 control-label">创建时间</label>
-            <div class="col-sm-5">
-                <input name="CreateTime" value="@obj.CreateTime" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
-            </div>
-        </div>
+       
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">状态</label>
             <div class="col-sm-5">
-                <input name="Status" value="@obj.Status" type="text" class="form-control" required>
+
+
+                <select id="Status" name="Status" class="selectpicker form-control" data-style="btn-default btn-sm">
+                    <option value="1">正常</option>
+                    <option value="2">隐藏</option>
+                </select>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -100,14 +78,61 @@
     </form>
 </div>
 <script>
+  
+    //实例化编辑器
+    var um = UM.getEditor('HelpContent');
+
+    //设置内容
+    function setContent(content) {
+        um.setContent(content);
+    }
+
+    //获取内容
+    function getContent() {
+        return um.getContent();
+    }
+
     var theEntity = @objStr;
+    if (theEntity.Id == null) {
+        $("#helppicYL").hide();
+    }
+    else {
+
+        $("#helppicYL").attr('src', theEntity.HelpPic);
+    }
+    var roleIds = theEntity.TypeId;
 
     $(function () {
+        $('#TypeId').selectpicker({
+            url: '/Help/Dev_HelpType/GetDataList_NoPagin',//远程地址
+            value: roleIds,//初始化值,字符串或字符串数组
+            liveSearch: false,//搜索
+            valueField: 'Id',
+            textField: 'Name'
+        });
+
         initEvent();
+
+
+
+        $('#HelpPic').html5Uploader({
+            //imgs: theEntity[aImgId],
+            asyncUpload: true,
+            uploadUrl: '/Base_SysManage/Common/UploadFile',
+            uploadLimit: 1,  //上传数量限制，0为不限
+            sizeLimit: 5,    //大小限制，M
+            type: 'file' //file即可上传文件也可上传图片
+        });
+
+        theEntity.HelpContent = setContent(unescape(theEntity.HelpContent));
+
     });
 
     //事件绑定
     function initEvent() {
+        $('#Status').selectpicker({
+            value: theEntity.Status
+        });
         //表单校验
         $('#form').validator().on('submit', function (e) {
             //校验成功
@@ -115,10 +140,18 @@
                 e.preventDefault();
 
                 var values = $('#form').getValues();
-                
+                values.HelpContent = escape(getContent());
+                try {
+                    values.HelpPic = $("#HelpPic").find('img')[0].src;
+                } catch (e) {
+
+                }
+
+
                 $.extend(theEntity, values);
                 loading();
                 $.postJSON('/Help/Dev_Help/SaveData', theEntity, function (resJson) {
+
                     loading(false);
 
                     if (resJson.Success) {
