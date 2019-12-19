@@ -43,9 +43,9 @@ namespace Coldairarrow.Web.Areas.SystemManage.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string keyword)
+        public ActionResult GetDataList(Pagination pagination, string parentId, string keyword)
         {
-            var dataList = _dev_TypeBus.GetDataList(pagination, keyword);
+            var dataList = _dev_TypeBus.GetDataList(pagination, parentId, keyword);
 
             return DataTable_Bootstrap(dataList, pagination);
         }
@@ -62,6 +62,18 @@ namespace Coldairarrow.Web.Areas.SystemManage.Controllers
             });
 
             return JsonContent(resList.ToJson());
+        }
+
+        /// <summary>
+        /// 获取数据列表
+        /// 注：无分页
+        /// </summary>
+        /// <param name="parentId">父级ID</param>
+        /// <returns></returns>
+        public ActionResult GetDataList_NoPagin(string parentId)
+        {
+            var dataList = _dev_TypeBus.GetDataList(new Pagination(), parentId);
+            return Content(dataList.ToJson());
         }
 
         #endregion

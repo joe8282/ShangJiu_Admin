@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
+<<<<<<< HEAD
 using System.Linq.Expressions;
 
 namespace Coldairarrow.Business.Shop
@@ -15,6 +16,17 @@ namespace Coldairarrow.Business.Shop
         #region 外部接口
 
         public List<Dev_ShopDTO> GetDataList(Pagination pagination, bool all, string userId = null, string TypeId = null, string ClassId = null, string ChannelId = null, string keyword = null)
+=======
+using System.Linq.Expressions;
+
+namespace Coldairarrow.Business.Shop
+{
+    public class Dev_ShopBusiness : BaseBusiness<Dev_Shop>, IDev_ShopBusiness, IDependency
+    {
+        #region 外部接口
+
+        public List<Dev_ShopDTO> GetDataList(Pagination pagination, bool all, string userId, string TypeId, string ClassId, string ChannelId, int? JoinWay, int? IsAd, int? IsTop, int? IsRefresh, int? HasReward, int? Status, string keyword, DateTime? startTime, DateTime? endTime)
+>>>>>>> 39ca4f60a40845dafcd96c41f97a64a947a0c658
         {
             Expression<Func<Dev_Shop, Base_User, Dev_Type, Dev_Type, Dev_Type, Dev_ShopDTO>> select = (a, b, c1, c2, c3) => new Dev_ShopDTO
             {
@@ -39,10 +51,21 @@ namespace Coldairarrow.Business.Shop
                 where = where.And(x => x.UserId == userId);
             if (!TypeId.IsNullOrEmpty())
                 where = where.And(x => x.TypeId == TypeId);
+            if (!ClassId.IsNullOrEmpty())
+                where = where.And(x => x.ClassId == ClassId);
+            if (!ChannelId.IsNullOrEmpty())
+                where = where.And(x => x.ChannelId == ChannelId);
+            if (!JoinWay.IsNullOrEmpty())
+                where = where.And(x => x.JoinWay == JoinWay);
+            if (!startTime.IsNullOrEmpty())
+                where = where.And(x => x.CreateTime >= startTime);
+            if (!endTime.IsNullOrEmpty())
+                where = where.And(x => x.CreateTime <= endTime);
             if (!keyword.IsNullOrEmpty())
             {
                 where = where.And(x =>
-                    x.UserName.Contains(keyword)
+                    x.ShopTitle.Contains(keyword)
+                    || x.UserName.Contains(keyword)
                     || x.RealName.Contains(keyword));
             }
 
