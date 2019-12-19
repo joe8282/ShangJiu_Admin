@@ -10,11 +10,13 @@ namespace Coldairarrow.Business.SystemManage
     {
         #region 外部接口
 
-        public List<Dev_Type> GetDataList(Pagination pagination, string keyword = null)
+        public List<Dev_Type> GetDataList(Pagination pagination, string parentId = null, string keyword = null)
         {
             var q = GetIQueryable();
             //筛选
             var where = LinqHelper.True<Dev_Type>();
+            if (!parentId.IsNullOrEmpty())
+                where = where.And(x => x.ParentId == parentId);
             if (!keyword.IsNullOrEmpty())
                 where = where.And(x => x.Name.Contains(keyword));
 
