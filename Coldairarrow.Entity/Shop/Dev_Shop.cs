@@ -90,7 +90,7 @@ namespace Coldairarrow.Entity.Shop
         /// <summary>
         /// 加入方式
         /// </summary>
-        public String JoinWay { get; set; }
+        public Int32? JoinWay { get; set; }
 
         /// <summary>
         /// 加入要求
@@ -120,22 +120,22 @@ namespace Coldairarrow.Entity.Shop
         /// <summary>
         /// 是否推广
         /// </summary>
-        public String IsAd { get; set; }
+        public Int32? IsAd { get; set; }
 
         /// <summary>
         /// 是否置顶
         /// </summary>
-        public String IsTop { get; set; }
+        public Int32? IsTop { get; set; }
 
         /// <summary>
         /// 是否自刷
         /// </summary>
-        public String IsRefresh { get; set; }
+        public Int32? IsRefresh { get; set; }
 
         /// <summary>
         /// 有无红包
         /// </summary>
-        public String HasReward { get; set; }
+        public Int32? HasReward { get; set; }
 
         /// <summary>
         /// 推广支出

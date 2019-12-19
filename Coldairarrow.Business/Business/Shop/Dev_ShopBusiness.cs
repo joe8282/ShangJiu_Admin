@@ -1,8 +1,12 @@
 using Coldairarrow.Entity.Shop;
+using Coldairarrow.Entity.Base_SysManage;
+using Coldairarrow.Entity.SystemManage;
 using Coldairarrow.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
+using System.Linq.Expressions;
 
 namespace Coldairarrow.Business.Shop
 {
@@ -10,14 +14,39 @@ namespace Coldairarrow.Business.Shop
     {
         #region 外部接口
 
-        public List<Dev_Shop> GetDataList(Pagination pagination, string condition, string keyword)
+        public List<Dev_ShopDTO> GetDataList(Pagination pagination, bool all, string userId = null, string TypeId = null, string ClassId = null, string ChannelId = null, string keyword = null)
         {
-            var q = GetIQueryable();
-            //筛选
-            if (!condition.IsNullOrEmpty() && !keyword.IsNullOrEmpty())
-                q = q.Where($@"{condition}.Contains(@0)", keyword);
+            Expression<Func<Dev_Shop, Base_User, Dev_Type, Dev_Type, Dev_Type, Dev_ShopDTO>> select = (a, b, c1, c2, c3) => new Dev_ShopDTO
+            {
+                UserName = b.UserName,
+                RealName = b.RealName,
+                Phone = b.Phone,
+                TypeName = c1.Name,
+                ClassName = c2.Name,
+                ChannelName = c3.Name
+            };
+            select = select.BuildExtendSelectExpre();
+            var q_Shop = all ? Service.GetIQueryable<Dev_Shop>() : GetIQueryable();
+            var q = from a in q_Shop.AsExpandable()
+                    join b in Service.GetIQueryable<Base_User>() on a.UserId equals b.Id
+                    join c1 in Service.GetIQueryable<Dev_Type>() on a.TypeId equals c1.Id
+                    join c2 in Service.GetIQueryable<Dev_Type>() on a.ClassId equals c2.Id
+                    join c3 in Service.GetIQueryable<Dev_Type>() on a.ChannelId equals c3.Id
+                    select @select.Invoke(a, b, c1, c2, c3);
 
-            return q.GetPagination(pagination).ToList();
+            var where = LinqHelper.True<Dev_ShopDTO>();
+            if (!userId.IsNullOrEmpty())
+                where = where.And(x => x.UserId == userId);
+            if (!TypeId.IsNullOrEmpty())
+                where = where.And(x => x.TypeId == TypeId);
+            if (!keyword.IsNullOrEmpty())
+            {
+                where = where.And(x =>
+                    x.UserName.Contains(keyword)
+                    || x.RealName.Contains(keyword));
+            }
+
+            return q.Where(where).GetPagination(pagination).ToList();
         }
 
         public Dev_Shop GetTheData(string id)

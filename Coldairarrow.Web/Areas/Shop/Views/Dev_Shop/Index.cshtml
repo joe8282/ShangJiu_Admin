@@ -1,14 +1,13 @@
 @{
     Layout = "~/Views/Shared/_Layout_List.cshtml";
 }
-
 <div class="fx-content">
     <div id="toobar">
         <div class="btn-group btn-group-sm">
-            <button onclick="openForm('', '添加数据');" type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                添加
-            </button>
+            @*<button onclick="openForm('', '添加数据');" type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    添加
+                </button>*@
             <button onclick="deleteData();" type="button" class="btn btn-default" aria-label="Right Align">
                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 删除
@@ -22,34 +21,39 @@
     <div class="fx-wrapper">
         <form class="form-inline" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
                 <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
-                    <option value="">请选择</option>
-                    
-                    <option value="ShopTitle">商号标题</option>
-                    <option value="ShopPic">商号主图</option>
-                    <option value="ShopRemark">商号摘要</option>
-                    <option value="ShopContent">商号介绍</option>
-                    <option value="UserId">创建人</option>
-                    <option value="TypeId">商号类型</option>
-                    <option value="ClassId">商号行业</option>
-                    <option value="ChannelId">所有者身份</option>
-                    <option value="Provice">省份</option>
-                    <option value="City">城市</option>
-                    <option value="Area">区县</option>
-                    <option value="Contact">联系人</option>
-                    <option value="ContactTel">联系电话</option>
-                    <option value="ContactAddress">经营地址</option>
-                    <option value="JoinWay">加入方式</option>
-                    <option value="JoinDemand">加入要求</option>
-                    <option value="IsAd">是否推广</option>
-                    <option value="IsTop">是否置顶</option>
-                    <option value="IsRefresh">是否自刷</option>
-                    <option value="HasReward">有无红包</option>
+                    <option value="">选择类型</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">选择行业</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">选择身份</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">加入方式</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">是否推广</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">是否置顶</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">是否自刷</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">有无红包</option>
+                </select>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">选择状态</option>
+                </select>
             </div>
             <div class="form-group">
+                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入标题、用户昵称、用户名称、手机号关键字"> 
+                <input name="startTime" id="startTime" type="text" placeholder="创建时间开始" data-date-format="yyyy-mm-dd" class="form-control input-sm">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" placeholder="创建时间结束" data-date-format="yyyy-mm-dd" class="form-control input-sm">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
                     <i class="glyphicon glyphicon-search"></i>
                     查询
@@ -61,7 +65,6 @@
         <table id="dataTable" class="table-bordered"></table>
     </div>
 </div>
-
 <script>
     var $table = $('#dataTable');
 
@@ -85,52 +88,74 @@
             pageSize: 30,
             pageList: [10, 30, 60, 100],
             columns: [
-                { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
-                { title: '商号标题', field: 'ShopTitle', width: '5%' },
-                { title: '商号主图', field: 'ShopPic', width: '5%' },
-                { title: '商号摘要', field: 'ShopRemark', width: '5%' },
-                { title: '商号介绍', field: 'ShopContent', width: '5%' },
-                { title: '创建人', field: 'UserId', width: '5%' },
-                { title: '商号类型', field: 'TypeId', width: '5%' },
-                { title: '商号行业', field: 'ClassId', width: '5%' },
-                { title: '所有者身份', field: 'ChannelId', width: '5%' },
-                { title: '省份', field: 'Provice', width: '5%' },
-                { title: '城市', field: 'City', width: '5%' },
-                { title: '区县', field: 'Area', width: '5%' },
-                { title: '联系人', field: 'Contact', width: '5%' },
-                { title: '联系电话', field: 'ContactTel', width: '5%' },
-                { title: '经营地址', field: 'ContactAddress', width: '5%' },
-                { title: '加入方式', field: 'JoinWay', width: '5%' },
-                { title: '加入要求', field: 'JoinDemand', width: '5%' },
-                { title: '加入费用（按次）', field: 'JoinFeeOnce', width: '5%' },
-                { title: '加入费用（按月）', field: 'JoinFeeMonth', width: '5%' },
-                { title: '加入费用（按年）', field: 'JoinFeeYear', width: '5%' },
-                { title: '加入费用（不限）', field: 'JoinFeeUnlimited', width: '5%' },
-                { title: '是否推广', field: 'IsAd', width: '5%' },
-                { title: '是否置顶', field: 'IsTop', width: '5%' },
-                { title: '是否自刷', field: 'IsRefresh', width: '5%' },
-                { title: '有无红包', field: 'HasReward', width: '5%' },
-                { title: '推广支出', field: 'AdFee', width: '5%' },
-                { title: '红包支出', field: 'RewardFee', width: '5%' },
-                { title: '成员数量', field: 'MemberNum', width: '5%' },
-                { title: '商讯数量', field: 'ProductNum', width: '5%' },
-                { title: '商链数量', field: 'LinkNum', width: '5%' },
-                { title: '说说数量', field: 'ChatNum', width: '5%' },
-                { title: '问答数量', field: 'AskNum', width: '5%' },
-                { title: '留言数量', field: 'MessageNum', width: '5%' },
-                { title: '代理数量', field: 'AgentNum', width: '5%' },
-                { title: '托客数量', field: 'CustomerNum', width: '5%' },
-                { title: '收费累计', field: 'GetPayFee', width: '5%' },
-                { title: '打赏累计', field: 'GetRewardFee', width: '5%' },
-                { title: '浏览数量', field: 'ClickNum', width: '5%' },
-                { title: '关注数量', field: 'CollectionNum', width: '5%' },
-                { title: '点赞数量', field: 'GoodNum', width: '5%' },
-                { title: '创建时间', field: 'CreateTime', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
-                { title: '操作时间', field: 'StatusTime', width: '5%' },
-                { title: '排序', field: 'Sort', width: '5%' },
+                { title: 'ck', field: 'ck', checkbox: true, width: '2%' },
                 {
-                    title: '操作', field: '_', width: '80%', formatter: function (value, row) {
+                    title: '商号', field: 'ShopTitle', width: '10%', formatter: function (value, row) {
+                        return '<img src="http://localhost:58424/css/fx/defaultAvatar.png" width="80%" /><br/><br/>' + row['ShopTitle'];
+                    }
+                },
+                {
+                    title: '创建人信息', field: 'UserId', width: '15%', formatter: function (value, row) {
+                        return '用户昵称：' + row['UserName'] + '<br/>用户名称：' + row['RealName'] + '<br/>手机号：' + row['Phone'] + '<br/><br/>联系人：' + row['Contact'] + '<br/>联系电话：' + row['ContactTel'] + '<br/>所在区域：' + row['Provice'] + row['City'] + row['Area'] + '<br/>经营地址：' + row['ContactAddress'];
+                    }
+                },
+                {
+                    title: '类型|行业|身份', field: 'TypeId', width: '8%', formatter: function (value, row) {
+                        return '类型：' + row['TypeName'] + '<br/>行业：' + row['ClassName'] + '<br/>身份：' + row['ChannelName'];
+                    }
+                },
+                {
+                    title: '加入方式', field: 'JoinWay', width: '10%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '开放加入',
+                            '2': '审核加入',
+                            '3': '付费加入',
+                        };
+                        if (value == '1') {
+                            return mapping[value];
+                        } else if (value == '2') {
+                            return mapping[value] + "<br/><br/>加入要求：" + row['JoinDemand'];
+                        } else {
+                            return mapping[value] + "<br/><br/>次费(￥)：" + row['JoinFeeOnce'] + "<br/>月费(￥)：" + row['JoinFeeMonth'] + "<br/>年费(￥)：" + row['JoinFeeYear'] + "<br/>不限(￥)：" + row['JoinFeeUnlimited'];
+                        }
+                        return '是否推广：' + mapping[row['IsAd']] + '<br/>是否置顶：' + mapping[row['IsTop']] + '<br/>是否自刷：' + mapping[row['IsRefresh']] + '<br/>有无红包：' + mapping[row['HasReward']];
+                    }
+                },
+                {
+                    title: '推广', field: 'Id', width: '10%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '是',
+                            '2': '否'
+                        };
+                        return '是否推广：' + mapping[row['IsAd']] + '<br/>是否置顶：' + mapping[row['IsTop']] + '<br/>是否自刷：' + mapping[row['IsRefresh']] + '<br/>有无红包：' + mapping[row['HasReward']];
+                    }
+                },
+                {
+                    title: '统计', field: 'Id', width: '10%', formatter: function (value, row) {
+                        return '代理数量：' + row['AgentNum'] + '<br/>托客数量：' + row['CustomerNum'] + '<br/>成员数量：' + row['MemberNum'] + '<br/>商讯数量：' + row['ProductNum'] + '<br/>商链数量：' + row['LinkNum'] + '<br/>说说数量：' + row['ChatNum'] + '<br/>问答数量：' + row['AskNum'] + '<br/>留言数量：' + row['MessageNum'] + '<br/>浏览数量：' + row['ClickNum'] + '<br/>关注数量：' + row['CollectionNum'] + '<br/>点赞数量：' + row['GoodNum'];
+                    }
+                },
+                {
+                    title: '收入|支出', field: 'Id', width: '10%', formatter: function (value, row) {
+                        return '收费累计：' + row['GetPayFee'] + '<br/>打赏累计：' + row['GetRewardFee'] + '<br/><br/>推广支出：' + row['AdFee'] + '<br/>红包支出：' + row['RewardFee'];
+                    }
+                },
+                {
+                    title: '状态', field: 'Status', width: '12%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '<span class=\"label label-default\">待审核</span>',
+                            '2': '<span class=\"label label-primary\">已通过</span>',
+                            '3': '<span class=\"label label-danger\">未通过</span>'
+                        };
+                        if (row['StatusTime'] == null) {
+                            return mapping[value] + '<br/><br/>创建时间：<br/>' + row['CreateTime'] + '<br/><br/>排序：' + row['Sort'];
+                        } else {
+                            return mapping[value] + '<br/>操作时间：<br/>' + row['StatusTime'] + '<br/><br/>创建时间：<br/>' + row['CreateTime'] + '<br/><br/>排序：' + row['Sort'];
+                        }
+                    }
+                },
+                {
+                    title: '操作', field: '_', width: '8%', formatter: function (value, row) {
                         var builder = new BtnBuilder();
                         builder.AddBtn({ icon: 'glyphicon-edit', function: 'openForm', param: [row['Id']] });
                         builder.AddBtn({ icon: 'glyphicon-trash', function: 'deleteData', param: [row['Id']] });
@@ -150,7 +175,14 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
     }
 
     //打开表单
@@ -159,7 +191,7 @@
             id: 'form',
             title: title,
             btn: ['确定', '取消'],
-            height:'80%',
+            height: '80%',
             url: '/Shop/Dev_Shop/Form?id={0}'.format(id || ''),
             yes: function (window, body) {
                 window.submitForm();
