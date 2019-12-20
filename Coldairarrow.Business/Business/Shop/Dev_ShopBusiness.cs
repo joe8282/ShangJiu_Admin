@@ -45,6 +45,16 @@ namespace Coldairarrow.Business.Shop
                 where = where.And(x => x.ChannelId == ChannelId);
             if (!JoinWay.IsNullOrEmpty())
                 where = where.And(x => x.JoinWay == JoinWay);
+            if (!IsAd.IsNullOrEmpty())
+                where = where.And(x => x.IsAd == IsAd);
+            if (!IsTop.IsNullOrEmpty())
+                where = where.And(x => x.IsTop == IsTop);
+            if (!IsRefresh.IsNullOrEmpty())
+                where = where.And(x => x.IsRefresh == IsRefresh);
+            if (!HasReward.IsNullOrEmpty())
+                where = where.And(x => x.HasReward == HasReward);
+            if (!Status.IsNullOrEmpty())
+                where = where.And(x => x.Status == Status);
             if (!startTime.IsNullOrEmpty())
                 where = where.And(x => x.CreateTime >= startTime);
             if (!endTime.IsNullOrEmpty())

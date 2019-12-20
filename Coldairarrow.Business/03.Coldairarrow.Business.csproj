@@ -181,6 +181,7 @@
     <Compile Include="Business\BaseBusiness.T.cs" />
     <Compile Include="Business\Base_SysManage\Base_DepartmentBusiness.cs" />
     <Compile Include="Business\Base_SysManage\DataPermission.cs" />
+    <Compile Include="Business\Base_SysManage\Dev_AccountRecordBusiness.cs" />
     <Compile Include="Business\Base_SysManage\SystemMenuManage.cs" />
     <Compile Include="Business\Help\Dev_HelpBusiness.cs" />
     <Compile Include="Business\Help\Dev_HelpTypeBusiness.cs" />
@@ -188,7 +189,9 @@
     <Compile Include="Business\OtherManage\Dev_AwardBusiness.cs" />
     <Compile Include="Business\OtherManage\Dev_CollectionBusiness.cs" />
     <Compile Include="Business\OtherManage\Dev_CommentBusiness.cs" />
+    <Compile Include="Business\OtherManage\Dev_PictureBusiness.cs" />
     <Compile Include="Business\PayRecord\Dev_PayRecordBusiness.cs" />
+    <Compile Include="Business\Product\Dev_ProductBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectTypeBusiness.cs" />
     <Compile Include="Business\Shop\Dev_ShopBusiness.cs" />
@@ -201,6 +204,7 @@
     <Compile Include="IBusiness\Base_SysManage\IBase_SysRoleBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IBase_UserBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IDataPermission.cs" />
+    <Compile Include="IBusiness\Base_SysManage\IDev_AccountRecordBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IRapidDevelopmentBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IPermissionManage.cs" />
     <Compile Include="IBusiness\Base_SysManage\ISystemMenuManage.cs" />
@@ -222,7 +226,9 @@
     <Compile Include="IBusiness\OtherManage\IDev_AwardBusiness.cs" />
     <Compile Include="IBusiness\OtherManage\IDev_CollectionBusiness.cs" />
     <Compile Include="IBusiness\OtherManage\IDev_CommentBusiness.cs" />
+    <Compile Include="IBusiness\OtherManage\IDev_PictureBusiness.cs" />
     <Compile Include="IBusiness\PayRecord\IDev_PayRecordBusiness.cs" />
+    <Compile Include="IBusiness\Product\IDev_ProductBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectTypeBusiness.cs" />
     <Compile Include="IBusiness\Shop\IDev_ShopBusiness.cs" />

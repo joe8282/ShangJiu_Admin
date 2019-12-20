@@ -1242,6 +1242,7 @@
     <Compile Include="Areas\Base_SysManage\Controllers\Base_UserController.cs" />
     <Compile Include="Areas\Base_SysManage\Controllers\CityController.cs" />
     <Compile Include="Areas\Base_SysManage\Controllers\CommonController.cs" />
+    <Compile Include="Areas\Base_SysManage\Controllers\Dev_AccountRecordController.cs" />
     <Compile Include="Areas\Base_SysManage\Controllers\RapidDevelopmentController.cs" />
     <Compile Include="Areas\Help\Controllers\Dev_HelpController.cs" />
     <Compile Include="Areas\Help\Controllers\Dev_HelpTypeController.cs" />
@@ -1249,9 +1250,12 @@
     <Compile Include="Areas\OtherManage\Controllers\Dev_AwardController.cs" />
     <Compile Include="Areas\OtherManage\Controllers\Dev_CollectionController.cs" />
     <Compile Include="Areas\OtherManage\Controllers\Dev_CommentController.cs" />
+    <Compile Include="Areas\OtherManage\Controllers\Dev_PictureController.cs" />
     <Compile Include="Areas\OtherManage\OtherManageAreaRegistration.cs" />
     <Compile Include="Areas\PayRecord\Controllers\Dev_PayRecordController.cs" />
     <Compile Include="Areas\PayRecord\PayRecordAreaRegistration.cs" />
+    <Compile Include="Areas\Product\Controllers\Dev_ProductController.cs" />
+    <Compile Include="Areas\Product\ProductAreaRegistration.cs" />
     <Compile Include="Areas\ProjectManage\Controllers\Dev_ProjectController.cs" />
     <Compile Include="Areas\ProjectManage\Controllers\Dev_ProjectTypeController.cs" />
     <Compile Include="Areas\ProjectManage\ProjectManageAreaRegistration.cs" />
@@ -1327,6 +1331,13 @@
     <Content Include="Areas\Shop\Views\Dev_Shop\Form.cshtml" />
     <Content Include="Areas\Shop\Views\Dev_Shop\Index.cshtml" />
     <Content Include="Areas\Shop\Views\web.config" />
+    <Content Include="Areas\Product\Views\Dev_Product\Form.cshtml" />
+    <Content Include="Areas\Product\Views\Dev_Product\Index.cshtml" />
+    <Content Include="Areas\Product\Views\web.config" />
+    <Content Include="Areas\OtherManage\Views\Dev_Picture\Form.cshtml" />
+    <Content Include="Areas\OtherManage\Views\Dev_Picture\Index.cshtml" />
+    <Content Include="Areas\Base_SysManage\Views\Dev_AccountRecord\Form.cshtml" />
+    <Content Include="Areas\Base_SysManage\Views\Dev_AccountRecord\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />

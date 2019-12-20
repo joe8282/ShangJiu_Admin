@@ -1,0 +1,184 @@
+@{
+    Layout = "~/Views/Shared/_Layout_List.cshtml";
+}
+
+<div class="fx-content">
+    <div id="toobar">
+        <div class="btn-group btn-group-sm">
+            <button onclick="openForm('', '添加数据');" type="button" class="btn btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                添加
+            </button>
+            <button onclick="deleteData();" type="button" class="btn btn-default" aria-label="Right Align">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                删除
+            </button>
+            <button type="button" class="btn btn-default" aria-label="Right Align" onclick="javascript: location.reload();">
+                <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                刷新
+            </button>
+        </div>
+    </div>
+    <div class="fx-wrapper">
+        <form class="form-inline" id="searchForm">
+            <div class="form-group">
+                <label>查询类别</label>
+                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    
+                    <option value="ProductTitle">商讯标题</option>
+                    <option value="ProductPic">商讯主图</option>
+                    <option value="ProductRemark">商讯摘要</option>
+                    <option value="ProductContent">商讯内容</option>
+                    <option value="ShopId">所属商号</option>
+                    <option value="UserId">创建人</option>
+                    <option value="TypeId">所属类型</option>
+                    <option value="ClassId">所属行业</option>
+                    <option value="ChannelId">所属应用</option>
+                    <option value="Provice">省份</option>
+                    <option value="City">城市</option>
+                    <option value="Area">区县</option>
+                    <option value="FromWay">来源</option>
+                    <option value="Author">作者</option>
+                    <option value="Source">出处</option>
+                </select>
+                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
+                    <i class="glyphicon glyphicon-search"></i>
+                    查询
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="fx-wrapper">
+        <table id="dataTable" class="table-bordered"></table>
+    </div>
+</div>
+
+<script>
+    var $table = $('#dataTable');
+
+    $(function () {
+        initTable();
+        bindEvent();
+    });
+
+    //初始化表格
+    function initTable() {
+        $table.bootstrapTable({
+            url: '/Product/Dev_Product/GetDataList',
+            idField: 'Id',
+            method: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            queryParamsType: '',
+            clickToSelect: false,
+            pagination: true,
+            sidePagination: "server",
+            pageNumber: 1,
+            pageSize: 30,
+            pageList: [10, 30, 60, 100],
+            columns: [
+                { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
+                { title: '商讯标题', field: 'ProductTitle', width: '5%' },
+                { title: '商讯主图', field: 'ProductPic', width: '5%' },
+                { title: '商讯摘要', field: 'ProductRemark', width: '5%' },
+                { title: '商讯内容', field: 'ProductContent', width: '5%' },
+                { title: '所属商号', field: 'ShopId', width: '5%' },
+                { title: '创建人', field: 'UserId', width: '5%' },
+                { title: '所属类型', field: 'TypeId', width: '5%' },
+                { title: '所属行业', field: 'ClassId', width: '5%' },
+                { title: '所属应用', field: 'ChannelId', width: '5%' },
+                { title: '省份', field: 'Provice', width: '5%' },
+                { title: '城市', field: 'City', width: '5%' },
+                { title: '区县', field: 'Area', width: '5%' },
+                { title: '收费设置', field: 'FeeWay', width: '5%' },
+                { title: '费用', field: 'PayFee', width: '5%' },
+                { title: '来源', field: 'FromWay', width: '5%' },
+                { title: '作者', field: 'Author', width: '5%' },
+                { title: '出处', field: 'Source', width: '5%' },
+                { title: '是否推广', field: 'IsAd', width: '5%' },
+                { title: '推广支出', field: 'AdFee', width: '5%' },
+                { title: '评论数量', field: 'CommentNum', width: '5%' },
+                { title: '浏览数量', field: 'ClickNum', width: '5%' },
+                { title: '收藏数量', field: 'CollectionNum', width: '5%' },
+                { title: '点赞数量', field: 'GoodNum', width: '5%' },
+                { title: '收费累计', field: 'GetPayFee', width: '5%' },
+                { title: '打赏累计', field: 'GetRewardFee', width: '5%' },
+                { title: '创建时间', field: 'CreateTime', width: '5%' },
+                { title: '状态', field: 'Status', width: '5%' },
+                { title: '操作时间', field: 'StatusTime', width: '5%' },
+                { title: '排序', field: 'Sort', width: '5%' },
+                {
+                    title: '操作', field: '_', width: '80%', formatter: function (value, row) {
+                        var builder = new BtnBuilder();
+                        builder.AddBtn({ icon: 'glyphicon-edit', function: 'openForm', param: [row['Id']] });
+                        builder.AddBtn({ icon: 'glyphicon-trash', function: 'deleteData', param: [row['Id']] });
+
+                        return builder.build();
+                    }
+                }
+            ],
+            queryParams: function (params) {
+                var searchParams = $('#searchForm').getValues();
+                $.extend(params, searchParams);
+
+                return params;
+            }
+        });
+    }
+
+    //绑定事件
+    function bindEvent() {
+
+    }
+
+    //打开表单
+    function openForm(id, title) {
+        dialogOpen({
+            id: 'form',
+            title: title,
+            btn: ['确定', '取消'],
+            height:'80%',
+            url: '/Product/Dev_Product/Form?id={0}'.format(id || ''),
+            yes: function (window, body) {
+                window.submitForm();
+            }
+        });
+    }
+
+    //删除数据
+    function deleteData(id) {
+        dialogComfirm('确认删除吗？', function () {
+            var ids = [];
+
+            if (typeof (id) == 'string') {//单条数据
+                ids.push(id);
+            } else {//多条数据
+                var rows = $table.bootstrapTable('getSelections');
+                if (rows.length == 0) {
+                    dialogError('请选择需要删除的数据！');
+                    return;
+                } else {
+                    $.each(rows, function (index, value) {
+                        ids.push(value['Id']);
+                    })
+                }
+            }
+
+            loading();
+            $.postJSON('/Product/Dev_Product/DeleteData', { ids: JSON.stringify(ids) }, function (resJson) {
+                loading(false);
+
+                if (resJson.Success) {
+                    $table.bootstrapTable('refresh');
+                    dialogSuccess('删除成功!');
+                }
+                else {
+                    dialogError(resJson.Msg);
+                }
+            });
+        });
+    }
+</script>
