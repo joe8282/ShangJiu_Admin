@@ -53,6 +53,13 @@ namespace Coldairarrow.Business.Help
 
         public AjaxResult AddData(Dev_Help newData)
         {
+            newData.CreateTime = DateTime.Now;
+            newData.ClickNum = 0;
+            newData.CommentNum = 0;
+            newData.CollectNum = 0;
+            newData.GoodNum = 0;
+            newData.RewardFee = 0;
+
             Insert(newData);
 
             return Success();

@@ -191,6 +191,15 @@
 
     //绑定事件
     function bindEvent() {
+<<<<<<< HEAD
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+=======
         $('#TypeId').selectpicker({
             url: '/SystemManage/Dev_Type/GetDataList_NoPagin?parentId=1204236075598483456',
             valueField: 'Id',
@@ -214,6 +223,7 @@
         $('#endTime').datetimepicker({
             language: 'zh-CN',
             //minView: "month", //选择日期后，不会再跳转去选择时分秒 
+>>>>>>> 39ca4f60a40845dafcd96c41f97a64a947a0c658
         });
     }
 
