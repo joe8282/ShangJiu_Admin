@@ -136,6 +136,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdRecord\Dev_AdOperation.cs" />
+    <Compile Include="AdRecord\Dev_AdRecord.cs" />
     <Compile Include="Base_SysManage\Base_AppSecret.cs" />
     <Compile Include="Base_SysManage\Base_DatabaseLink.cs" />
     <Compile Include="Base_SysManage\Base_Department.cs" />
@@ -161,6 +163,9 @@
     <Compile Include="ProjectManage\Dev_ProjectType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shop\Dev_Shop.cs" />
+    <Compile Include="Shop\Dev_ShopLink.cs" />
+    <Compile Include="Shop\Dev_ShopMember.cs" />
+    <Compile Include="Shop\Dev_ShopProduct.cs" />
     <Compile Include="SystemManage\Dev_Info.cs" />
     <Compile Include="SystemManage\Dev_Type.cs" />
   </ItemGroup>

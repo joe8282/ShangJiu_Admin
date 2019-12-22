@@ -178,6 +178,8 @@
     <Compile Include="01Cache\IBaseCache.T.cs" />
     <Compile Include="01Cache\IBase_UserDTOCache.cs" />
     <Compile Include="01Cache\Base_UserDTOCache.cs" />
+    <Compile Include="Business\AdRecord\Dev_AdOperationBusiness.cs" />
+    <Compile Include="Business\AdRecord\Dev_AdRecordBusiness.cs" />
     <Compile Include="Business\BaseBusiness.T.cs" />
     <Compile Include="Business\Base_SysManage\Base_DepartmentBusiness.cs" />
     <Compile Include="Business\Base_SysManage\DataPermission.cs" />
@@ -195,8 +197,13 @@
     <Compile Include="Business\ProjectManage\Dev_ProjectBusiness.cs" />
     <Compile Include="Business\ProjectManage\Dev_ProjectTypeBusiness.cs" />
     <Compile Include="Business\Shop\Dev_ShopBusiness.cs" />
+    <Compile Include="Business\Shop\Dev_ShopLinkBusiness.cs" />
+    <Compile Include="Business\Shop\Dev_ShopMemberBusiness.cs" />
+    <Compile Include="Business\Shop\Dev_ShopProductBusiness.cs" />
     <Compile Include="Business\SystemManage\Dev_InfoBusiness.cs" />
     <Compile Include="Business\SystemManage\Dev_TypeBusiness.cs" />
+    <Compile Include="IBusiness\AdRecord\IDev_AdOperationBusiness.cs" />
+    <Compile Include="IBusiness\AdRecord\IDev_AdRecordBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IBase_AppSecretBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IBase_DatabaseLinkBusiness.cs" />
     <Compile Include="IBusiness\Base_SysManage\IBase_DepartmentBusiness.cs" />
@@ -232,6 +239,9 @@
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectBusiness.cs" />
     <Compile Include="IBusiness\ProjectManage\IDev_ProjectTypeBusiness.cs" />
     <Compile Include="IBusiness\Shop\IDev_ShopBusiness.cs" />
+    <Compile Include="IBusiness\Shop\IDev_ShopLinkBusiness.cs" />
+    <Compile Include="IBusiness\Shop\IDev_ShopMemberBusiness.cs" />
+    <Compile Include="IBusiness\Shop\IDev_ShopProductBusiness.cs" />
     <Compile Include="IBusiness\SystemManage\IDev_InfoBusiness.cs" />
     <Compile Include="IBusiness\SystemManage\IDev_TypeBusiness.cs" />
     <Compile Include="Logger\BaseTarget.cs" />

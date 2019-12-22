@@ -1233,6 +1233,9 @@
     <Compile Include="App_Start\DependencyViewPage.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\AdRecord\AdRecordAreaRegistration.cs" />
+    <Compile Include="Areas\AdRecord\Controllers\Dev_AdOperationController.cs" />
+    <Compile Include="Areas\AdRecord\Controllers\Dev_AdRecordController.cs" />
     <Compile Include="Areas\Base_SysManage\Base_SysManageAreaRegistration.cs" />
     <Compile Include="Areas\Base_SysManage\Controllers\Base_AppSecretController.cs" />
     <Compile Include="Areas\Base_SysManage\Controllers\Base_DatabaseLinkController.cs" />
@@ -1260,6 +1263,9 @@
     <Compile Include="Areas\ProjectManage\Controllers\Dev_ProjectTypeController.cs" />
     <Compile Include="Areas\ProjectManage\ProjectManageAreaRegistration.cs" />
     <Compile Include="Areas\Shop\Controllers\Dev_ShopController.cs" />
+    <Compile Include="Areas\Shop\Controllers\Dev_ShopLinkController.cs" />
+    <Compile Include="Areas\Shop\Controllers\Dev_ShopMemberController.cs" />
+    <Compile Include="Areas\Shop\Controllers\Dev_ShopProductController.cs" />
     <Compile Include="Areas\Shop\ShopAreaRegistration.cs" />
     <Compile Include="Areas\SystemManage\Controllers\Dev_InfoController.cs" />
     <Compile Include="Areas\SystemManage\Controllers\Dev_TypeController.cs" />
@@ -1338,6 +1344,17 @@
     <Content Include="Areas\OtherManage\Views\Dev_Picture\Index.cshtml" />
     <Content Include="Areas\Base_SysManage\Views\Dev_AccountRecord\Form.cshtml" />
     <Content Include="Areas\Base_SysManage\Views\Dev_AccountRecord\Index.cshtml" />
+    <Content Include="Areas\AdRecord\Views\Dev_AdOperation\Form.cshtml" />
+    <Content Include="Areas\AdRecord\Views\Dev_AdOperation\Index.cshtml" />
+    <Content Include="Areas\AdRecord\Views\Dev_AdRecord\Form.cshtml" />
+    <Content Include="Areas\AdRecord\Views\Dev_AdRecord\Index.cshtml" />
+    <Content Include="Areas\AdRecord\Views\web.config" />
+    <Content Include="Areas\Shop\Views\Dev_ShopLink\Form.cshtml" />
+    <Content Include="Areas\Shop\Views\Dev_ShopLink\Index.cshtml" />
+    <Content Include="Areas\Shop\Views\Dev_ShopMember\Form.cshtml" />
+    <Content Include="Areas\Shop\Views\Dev_ShopMember\Index.cshtml" />
+    <Content Include="Areas\Shop\Views\Dev_ShopProduct\Form.cshtml" />
+    <Content Include="Areas\Shop\Views\Dev_ShopProduct\Index.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
