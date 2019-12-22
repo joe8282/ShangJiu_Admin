@@ -5,18 +5,18 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore bundler config.
-/.vs/
-/Coldairarrow.Business/bin/
-/Coldairarrow.Business/obj/
-/Coldairarrow.DataRepository/bin/
-/Coldairarrow.DataRepository/obj/
-/Coldairarrow.Entity/bin/
-/Coldairarrow.Entity/obj/
-/Coldairarrow.Util/bin/
-/Coldairarrow.Util/obj/
-/Coldairarrow.Web/bin/
-/Coldairarrow.Web/obj/
-/Coldairarrow.UnitTests/bin/
-/Coldairarrow.UnitTests/obj/
-/Coldairarrow.Console/bin/
-/Coldairarrow.Console/obj/
+.vs/
+Coldairarrow.Business/bin/
+Coldairarrow.Business/obj/
+Coldairarrow.DataRepository/bin/
+Coldairarrow.DataRepository/obj/
+Coldairarrow.Entity/bin/
+Coldairarrow.Entity/obj/
+Coldairarrow.Util/bin/
+Coldairarrow.Util/obj/
+Coldairarrow.Web/bin/
+Coldairarrow.Web/obj/
+Coldairarrow.UnitTests/bin/
+Coldairarrow.UnitTests/obj/
+Coldairarrow.Console/bin/
+Coldairarrow.Console/obj/
