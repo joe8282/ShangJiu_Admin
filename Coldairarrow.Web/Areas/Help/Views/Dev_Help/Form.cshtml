@@ -93,7 +93,6 @@
     }
 
     var theEntity = @objStr;
-    console.log(JSON.stringify(theEntity));
     if (theEntity.Id == null) {
         $("#helppicYL").hide();
     }
@@ -125,12 +124,7 @@
             type: 'file' //file即可上传文件也可上传图片
         });
 
-        if (theEntity.HelpContent == null) {
-            theEntity.HelpContent = "12"
-        }
-        else {
-            theEntity.HelpContent = setContent(unescape(theEntity.HelpContent));
-        }
+  
        
       
 

@@ -13,7 +13,11 @@
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">所属类型</label>
             <div class="col-sm-5">
-                <input name="PictureType" value="@obj.PictureType" type="text" class="form-control" required>
+             
+                <select id="PictureType" name="PictureType" class="selectpicker form-control" data-style="btn-default btn-sm">
+                    <option value="首页Banner">首页Banner</option>
+                    <option value="其他类型">其他类型</option>
+                </select>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -27,8 +31,9 @@
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">图片</label>
             <div class="col-sm-5">
-                <input name="Pic" value="@obj.Pic" type="text" class="form-control" required>
-                <div class="help-block with-errors"></div>
+                <div id="Pic" style="width:300px;height:150px;overflow:auto"> </div>
+                <img id="PicYL" style="width:150px;height:150px;overflow:auto" src="" />
+
             </div>
         </div>
         <div class="form-group form-group-sm">
@@ -38,24 +43,27 @@
                 <div class="help-block with-errors"></div>
             </div>
         </div>
-        <div class="form-group form-group-sm">
+        @*<div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">点击数量</label>
             <div class="col-sm-5">
                 <input name="ClickNum" value="@obj.ClickNum" type="text" class="form-control" required>
                 <div class="help-block with-errors"></div>
             </div>
-        </div>
-        <div class="form-group form-group-sm">
+        </div>*@
+        @*<div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">创建时间</label>
             <div class="col-sm-5">
                 <input name="CreateTime" value="@obj.CreateTime" type="text" class="form-control" required>
                 <div class="help-block with-errors"></div>
             </div>
-        </div>
+        </div>*@
         <div class="form-group form-group-sm">
             <label class="col-sm-2 control-label">状态</label>
             <div class="col-sm-5">
-                <input name="Status" value="@obj.Status" type="text" class="form-control" required>
+                <select id="Status" name="Status" class="selectpicker form-control" data-style="btn-default btn-sm">
+                    <option value="1">正常</option>
+                    <option value="2">隐藏</option>
+                </select>
                 <div class="help-block with-errors"></div>
             </div>
         </div>
@@ -74,12 +82,41 @@
 <script>
     var theEntity = @objStr;
 
+    if (theEntity.Id == null) {
+        $("#PicYL").hide();
+    }
+    else {
+
+        $("#PicYL").attr('src', theEntity.Pic);
+    }
+
+
     $(function () {
         initEvent();
+
+        $('#Pic').html5Uploader({
+            //imgs: theEntity[aImgId],
+            asyncUpload: true,
+            uploadUrl: '/Base_SysManage/Common/UploadFile',
+            uploadLimit: 1,  //上传数量限制，0为不限
+            sizeLimit: 5,    //大小限制，M
+            type: 'file' //file即可上传文件也可上传图片
+        });
+
+
     });
 
     //事件绑定
     function initEvent() {
+
+        $('#PictureType').selectpicker({
+            value: theEntity.PictureType
+        });
+
+        $('#Status').selectpicker({
+            value: theEntity.Status
+        });
+
         //表单校验
         $('#form').validator().on('submit', function (e) {
             //校验成功
@@ -87,7 +124,15 @@
                 e.preventDefault();
 
                 var values = $('#form').getValues();
-                
+
+             
+                try {
+                    values.Pic = $("#Pic").find('img')[0].src;
+                } catch (e) {
+
+                }
+
+
                 $.extend(theEntity, values);
                 loading();
                 $.postJSON('/OtherManage/Dev_Picture/SaveData', theEntity, function (resJson) {
