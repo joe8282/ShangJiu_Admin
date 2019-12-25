@@ -22,16 +22,24 @@
     <div class="fx-wrapper">
         <form class="form-inline" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>所属类型</label>
+                <select class="selectpicker" id="PictureType" name="PictureType" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="PictureType">所属类型</option>
-                    <option value="Title">标题</option>
-                    <option value="Pic">图片</option>
-                    <option value="Link">链接</option>
+                    <option value="首页Banner">首页Banner</option>
+                    <option value="其他类型">其他类型</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+                <label>状态</label>
+                <select class="selectpicker" id="Status" name="Status" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">正常</option>
+                    <option value="2">隐藏</option>
+                </select>
+                <label>标题</label>
+                <input type="text" class="form-control input-sm" name="Title" id="Title" placeholder="标题">
+                <label>时间</label>
+                <input name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -72,11 +80,29 @@
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
                 { title: '所属类型', field: 'PictureType', width: '5%' },
                 { title: '标题', field: 'Title', width: '5%' },
-                { title: '图片', field: 'Pic', width: '5%' },
-                { title: '链接', field: 'Link', width: '5%' },
+                {
+                    title: "图片", field: 'Pic', width: '5%',
+                    formatter: function (cellvalue, options, rowObject) {
+                        return "<img src='" + cellvalue + "' width='50px'></img>"
+                    }
+                },
+                { title: '链接', field: 'Link', width: '5%', visible:true },
                 { title: '点击数量', field: 'ClickNum', width: '5%' },
                 { title: '创建时间', field: 'CreateTime', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
+                {
+                    title: "状态", field: 'Status', width: '5%',
+                    formatter: function (cellvalue, options, rowObject) {
+                        switch (cellvalue) {
+                            case 1:
+                                return "正常";
+                                break;
+                            case 2:
+                                return "隐藏";
+                                break;
+                            default:
+                        }
+                    }
+                },
                 { title: '排序', field: 'Sort', width: '5%' },
                 {
                     title: '操作', field: '_', width: '80%', formatter: function (value, row) {
@@ -91,6 +117,7 @@
             queryParams: function (params) {
                 var searchParams = $('#searchForm').getValues();
                 $.extend(params, searchParams);
+                alert(JSON.stringify( params));
 
                 return params;
             }
@@ -99,7 +126,12 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+        });
     }
 
     //打开表单
