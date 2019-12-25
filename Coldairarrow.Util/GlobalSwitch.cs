@@ -23,12 +23,12 @@ namespace Coldairarrow.Util
         /// <summary>
         /// 项目名
         /// </summary>
-        public static string ProjectName { get; } = "Colder.Fx.Net.AdminLTE";
+        public static string ProjectName { get; } = "AdminLTE";
 
         /// <summary>
         /// 网站根地址
         /// </summary>
-        public static string WebRootUrl { get; set; } = "http://localhost:3546/";
+        public static string WebRootUrl { get; set; } = "http://localhost:58424/";
 
         #endregion
 

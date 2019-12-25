@@ -276,3 +276,4 @@ E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\00.Cold
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csproj.CopyComplete
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\Coldairarrow.Util.dll
 E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\Coldairarrow.Util.pdb
+E:\项目开发\ShangJiu168\ShangJiuSolution\Coldairarrow.Util\obj\Debug\00.Coldairarrow.Util.csprojAssemblyReference.cache
