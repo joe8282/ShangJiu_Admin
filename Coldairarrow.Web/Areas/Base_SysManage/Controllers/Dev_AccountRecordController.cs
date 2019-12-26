@@ -1,6 +1,7 @@
 using Coldairarrow.Business.Base_SysManage;
 using Coldairarrow.Entity.Base_SysManage;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.Base_SysManage.Controllers
@@ -42,9 +43,9 @@ namespace Coldairarrow.Web.Areas.Base_SysManage.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList(Pagination pagination, string RecordType,string RecordClass,int? Status,string UserId,string Remark,DateTime? startTime,DateTime? endTime)
         {
-            var dataList = _dev_AccountRecordBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_AccountRecordBus.GetDataList(pagination, false, RecordType, RecordClass, Status, UserId, Remark, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

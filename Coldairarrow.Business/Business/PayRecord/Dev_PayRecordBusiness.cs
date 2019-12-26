@@ -59,12 +59,30 @@ namespace Coldairarrow.Business.PayRecord
                 where = where.And(x => x.TradeNo == TradeNo);
             if (!ShopUserrId.IsNullOrEmpty())
             {
-               string userid = baseuserservice.GetDataTableWithSql("select id from Base_User where UserName='"+ ShopUserrId +"'").Rows[0][0].ToString();//通过用户输入的username获得用户的id
+                var row = baseuserservice.GetDataTableWithSql("select id from Base_User where UserName='" + ShopUserrId + "'");//通过用户输入的username获得用户的id
+                string userid;
+                if (row.Rows.Count == 0)
+                {
+                    userid = "";
+                }
+                else
+                {
+                    userid = row.Rows[0][0].ToString();
+                }
                 where = where.And(x => x.ShopUserrId == userid);
             }
             if (!UserName.IsNullOrEmpty())
             {
-                string userid = baseuserservice.GetDataTableWithSql("select id from Base_User where UserName='" + UserName + "'").Rows[0][0].ToString();//通过用户输入的username获得用户的id
+                var  row = baseuserservice.GetDataTableWithSql("select id from Base_User where UserName='" + UserName + "'");//通过用户输入的username获得用户的id
+                string userid;
+                if (row.Rows.Count == 0)
+                {
+                    userid = "";
+                }
+                else
+                {
+                    userid = row.Rows[0][0].ToString();
+                }
                 where = where.And(x => x.UserId == userid);
             }
 
