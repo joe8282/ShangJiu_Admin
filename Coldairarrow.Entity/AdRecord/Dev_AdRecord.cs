@@ -33,6 +33,11 @@ namespace Coldairarrow.Entity.AdRecord
         public String AboutId { get; set; }
 
         /// <summary>
+        /// 所属标题
+        /// </summary>
+        public String AboutTitle { get; set; }
+
+        /// <summary>
         /// 推广省份
         /// </summary>
         public String AdProvice { get; set; }
@@ -81,6 +86,21 @@ namespace Coldairarrow.Entity.AdRecord
         /// 推广结束时间
         /// </summary>
         public DateTime? EndTime { get; set; }
+
+        /// <summary>
+        /// 是否置顶
+        /// </summary>
+        public Int32? IsTop { get; set; }
+
+        /// <summary>
+        /// 是否自刷
+        /// </summary>
+        public Int32? IsRefresh { get; set; }
+
+        /// <summary>
+        /// 是否手刷
+        /// </summary>
+        public Int32? IsRefreshUser { get; set; }
 
         /// <summary>
         /// 状态

@@ -228,6 +228,11 @@ namespace Coldairarrow.Entity.Shop
         public DateTime? StatusTime { get; set; }
 
         /// <summary>
+        /// ±¸×¢
+        /// </summary>
+        public String Remark { get; set; }
+
+        /// <summary>
         /// ÅÅÐò
         /// </summary>
         public Int32? Sort { get; set; }

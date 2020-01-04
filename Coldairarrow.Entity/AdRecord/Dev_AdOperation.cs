@@ -18,9 +18,29 @@ namespace Coldairarrow.Entity.AdRecord
         public String Id { get; set; }
 
         /// <summary>
+        /// 操作人
+        /// </summary>
+        public String UserId { get; set; }
+
+        /// <summary>
         /// 所属推广记录
         /// </summary>
         public String AdRecordId { get; set; }
+
+        /// <summary>
+        /// 所属推广类型
+        /// </summary>
+        public String AdRecordType { get; set; }
+
+        /// <summary>
+        /// 所属标题ID
+        /// </summary>
+        public String AboutId { get; set; }
+
+        /// <summary>
+        /// 所属标题
+        /// </summary>
+        public String AboutTitle { get; set; }
 
         /// <summary>
         /// 操作类型

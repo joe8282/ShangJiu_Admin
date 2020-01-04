@@ -1,6 +1,7 @@
 using Coldairarrow.Business.AdRecord;
 using Coldairarrow.Entity.AdRecord;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.AdRecord.Controllers
@@ -42,9 +43,9 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList(Pagination pagination, string adRecordType, string operationType, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_AdOperationBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_AdOperationBus.GetDataList(pagination, false, adRecordType, operationType, aboutId, userId, username, keyword, Status, _startTime, _endTime, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

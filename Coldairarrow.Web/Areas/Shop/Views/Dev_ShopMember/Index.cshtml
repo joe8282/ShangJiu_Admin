@@ -22,15 +22,18 @@
     <div class="fx-wrapper">
         <form class="form-inline" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>状态</label>
+                <select id="Status" name="Status" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="ShopId">所属商号</option>
-                    <option value="UserId">用户ID</option>
-                    <option value="Remark">备注</option>
+                    <option value="1">待审核</option>
+                    <option value="2">已通过</option>
+                    <option value="3">未通过</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+                <input type="text" class="form-control input-sm" name="username" style="width:250px;" placeholder="请输入用户昵称、用户名称、手机号关键字">
+                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入商号关键字">
+                <input name="startTime" id="startTime" type="text" placeholder="创建时间开始" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control input-sm">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" placeholder="创建时间结束" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control input-sm">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -51,6 +54,8 @@
     $(function () {
         initTable();
         bindEvent();
+
+        $("[data-toggle='tooltip']").tooltip();
     });
 
     //初始化表格
@@ -68,15 +73,44 @@
             pageSize: 30,
             pageList: [10, 30, 60, 100],
             columns: [
-                { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
-                { title: '所属商号', field: 'ShopId', width: '5%' },
-                { title: '用户ID', field: 'UserId', width: '5%' },
-                { title: '是否管理员', field: 'IdAdmin', width: '5%' },
-                { title: '创建时间', field: 'CreateTime', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
-                { title: '备注', field: 'Remark', width: '5%' },
+                { title: 'ck', field: 'ck', checkbox: true, width: '2%' },
                 {
-                    title: '操作', field: '_', width: '80%', formatter: function (value, row) {
+                    title: '用户', field: 'UserId', width: '15%', formatter: function (value, row) {
+                        return row['UserName'] + '-' + row['RealName'] + '-' + row['Phone'];
+                    }
+                },
+                { title: '所属商号', field: 'ShopTitle', width: '15%' },
+                {
+                    title: '是否管理员', field: 'IdAdmin', width: '3%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '是',
+                            '2': '否'
+                        };
+                        return mapping[row['IdAdmin']]
+                    }
+                },
+                {
+                    title: '创建时间', field: 'CreateTime', width: '5%', formatter: function (value, row) {
+                        return value.substring(0,10)
+                    }
+                },
+                {
+                    title: '状态', field: 'Status', width: '2%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '<span class=\"label label-default\">待审核</span>',
+                            '2': '<span class=\"label label-primary\">已通过</span>',
+                            '3': '<span class=\"label label-danger\">未通过</span>'
+                        };
+                        return mapping[value]
+                    }
+                },
+                {
+                    title: '备注', field: 'Remark', width: '4%', formatter: function (value, row) {
+                        return '<span data-toggle="tooltip" title="' + value + '">查看</span>'
+                    }
+                },
+                {
+                    title: '操作', field: '_', width: '10%', formatter: function (value, row) {
                         var builder = new BtnBuilder();
                         builder.AddBtn({ icon: 'glyphicon-edit', function: 'openForm', param: [row['Id']] });
                         builder.AddBtn({ icon: 'glyphicon-trash', function: 'deleteData', param: [row['Id']] });

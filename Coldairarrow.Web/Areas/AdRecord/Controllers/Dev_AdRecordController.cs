@@ -1,6 +1,7 @@
 using Coldairarrow.Business.AdRecord;
 using Coldairarrow.Entity.AdRecord;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.AdRecord.Controllers
@@ -36,15 +37,29 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         #region 获取数据
 
         /// <summary>
-        /// 获取数据列表
+        /// 获取数据列表（商号推广）
         /// </summary>
         /// <param name="pagination">分页参数</param>
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList1(Pagination pagination, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_AdRecordBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_AdRecordBus.GetDataList(pagination, false, 1, aboutId, userId, username, keyword, Status, _startTime, _endTime, startTime, endTime);
+
+            return DataTable_Bootstrap(dataList, pagination);
+        }
+
+        /// <summary>
+        /// 获取数据列表（商讯推广）
+        /// </summary>
+        /// <param name="pagination">分页参数</param>
+        /// <param name="condition">查询类型</param>
+        /// <param name="keyword">关键字</param>
+        /// <returns></returns>
+        public ActionResult GetDataList2(Pagination pagination, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
+        {
+            var dataList = _dev_AdRecordBus.GetDataList(pagination, false, 2, aboutId, userId, username, keyword, Status, _startTime, _endTime, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

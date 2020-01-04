@@ -1,6 +1,7 @@
 using Coldairarrow.Business.Shop;
 using Coldairarrow.Entity.Shop;
 using Coldairarrow.Util;
+using System;
 using System.Web.Mvc;
 
 namespace Coldairarrow.Web.Areas.Shop.Controllers
@@ -42,9 +43,9 @@ namespace Coldairarrow.Web.Areas.Shop.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string condition, string keyword)
+        public ActionResult GetDataList(Pagination pagination, string shopId, string linkId, string userId, string username, string keyword, int? Status, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_ShopLinkBus.GetDataList(pagination, condition, keyword);
+            var dataList = _dev_ShopLinkBus.GetDataList(pagination, false, shopId, linkId, userId, username, keyword, Status, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }

@@ -27,6 +27,9 @@
                     <option value="">请选择</option>
                     
                     <option value="AdRecordId">所属推广记录</option>
+                    <option value="AdRecordType">所属推广类型</option>
+                    <option value="AboutId">所属标题ID</option>
+                    <option value="AboutTitle">所属标题</option>
                     <option value="OperationType">操作类型</option>
                     <option value="TradeNo">交易号</option>
                     <option value="Remark">备注</option>
@@ -71,6 +74,9 @@
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
                 { title: '所属推广记录', field: 'AdRecordId', width: '5%' },
+                { title: '所属推广类型', field: 'AdRecordType', width: '5%' },
+                { title: '所属标题ID', field: 'AboutId', width: '5%' },
+                { title: '所属标题', field: 'AboutTitle', width: '5%' },
                 { title: '操作类型', field: 'OperationType', width: '5%' },
                 { title: '天数', field: 'DateNum', width: '5%' },
                 { title: '开始时间', field: 'StartTime', width: '5%' },
@@ -91,6 +97,8 @@
                 }
             ],
             queryParams: function (params) {
+                var typeId = request("typeId")
+                if (typeId == 1) { params.adRecordType = '商号推广'; } else { params.adRecordType = '商讯推广'; }
                 var searchParams = $('#searchForm').getValues();
                 $.extend(params, searchParams);
 

@@ -45,7 +45,7 @@ namespace Coldairarrow.Entity.Shop
         /// <summary>
         /// ±¸×¢
         /// </summary>
-        public String Ramark { get; set; }
+        public String Remark { get; set; }
 
         /// <summary>
         /// ÅÅÐò

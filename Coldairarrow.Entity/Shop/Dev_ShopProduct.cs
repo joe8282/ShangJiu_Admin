@@ -35,7 +35,7 @@ namespace Coldairarrow.Entity.Shop
         /// <summary>
         /// ÀàĞÍID
         /// </summary>
-        public Int32? TypeId { get; set; }
+        public Int32? IsJoin { get; set; }
 
         /// <summary>
         /// ¶şÎ¬Âë
