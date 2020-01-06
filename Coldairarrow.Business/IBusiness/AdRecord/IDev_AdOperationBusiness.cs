@@ -7,7 +7,7 @@ namespace Coldairarrow.Business.AdRecord
 {
     public interface IDev_AdOperationBusiness
     {
-        List<Dev_AdOperationDTO> GetDataList(Pagination pagination, bool all, string adRecordType, string operationType, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime);
+        List<Dev_AdOperationDTO> GetDataList(Pagination pagination, bool all, string adRecordId, string adRecordType, string operationType, string aboutId, string userId, string username, string keyword, int? Status, DateTime? adTime, DateTime? startTime, DateTime? endTime);
         Dev_AdOperation GetTheData(string id);
         AjaxResult AddData(Dev_AdOperation newData);
         AjaxResult UpdateData(Dev_AdOperation theData);

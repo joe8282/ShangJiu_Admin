@@ -68,9 +68,9 @@
             </div>
             <div class="form-group">
                 <input type="text" class="form-control input-sm" style="width:300px;" name="keyword" placeholder="请输入标题、用户昵称、用户名称、手机号关键字"> 
-                <input name="startTime" id="startTime" type="text" placeholder="创建时间开始" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control input-sm">
+                <input name="startTime" id="startTime" type="text" placeholder="创建时间开始" data-date-format="yyyy-mm-dd" class="form-control input-sm">
                 <label>~</label>
-                <input name="endTime" id="endTime" type="text" placeholder="创建时间结束" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control input-sm">
+                <input name="endTime" id="endTime" type="text" placeholder="创建时间结束" data-date-format="yyyy-mm-dd" class="form-control input-sm">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
                     <i class="glyphicon glyphicon-search"></i>
                     查询
@@ -211,11 +211,11 @@
         });
         $('#startTime').datetimepicker({
             language: 'zh-CN',
-            //minView: "month", //选择日期后，不会再跳转去选择时分秒 
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
         });
         $('#endTime').datetimepicker({
             language: 'zh-CN',
-            //minView: "month", //选择日期后，不会再跳转去选择时分秒
+            minView: "month", //选择日期后，不会再跳转去选择时分秒
         });
     }
 

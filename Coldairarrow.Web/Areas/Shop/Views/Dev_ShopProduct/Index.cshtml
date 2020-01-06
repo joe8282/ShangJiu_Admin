@@ -31,9 +31,9 @@
                 </select>
                 <input type="text" class="form-control input-sm" name="username" style="width:250px;" placeholder="请输入用户昵称、用户名称、手机号关键字">
                 <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入商讯、商号关键字">
-                <input name="startTime" id="startTime" type="text" placeholder="创建时间开始" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control input-sm">
+                <input name="startTime" id="startTime" type="text" placeholder="创建时间开始" data-date-format="yyyy-mm-dd" class="form-control input-sm">
                 <label>~</label>
-                <input name="endTime" id="endTime" type="text" placeholder="创建时间结束" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control input-sm">
+                <input name="endTime" id="endTime" type="text" placeholder="创建时间结束" data-date-format="yyyy-mm-dd" class="form-control input-sm">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -120,6 +120,7 @@
                         var builder = new BtnBuilder();
                         builder.AddBtn({ icon: 'glyphicon-edit', function: 'openForm', param: [row['Id']] });
                         builder.AddBtn({ icon: 'glyphicon-trash', function: 'deleteData', param: [row['Id']] });
+                        builder.AddBtn({ name: ' 状态处理', icon: 'glyphicon-cog', function: 'updateData', param: [row['Id'], row['Status'], row['Remark']] });
 
                         return builder.build();
                     }
@@ -136,7 +137,14 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒
+        });
     }
 
     //打开表单
@@ -179,6 +187,30 @@
                 if (resJson.Success) {
                     $table.bootstrapTable('refresh');
                     dialogSuccess('删除成功!');
+                }
+                else {
+                    dialogError(resJson.Msg);
+                }
+            });
+        });
+    }
+
+    //更新状态
+    function updateData(id, status, remark) {
+        var _select
+        if (status == 1) { _select = '<option value="1" selected>待审核</option><option value="2">已通过</option><option value="3">未通过</option>' }
+        if (status == 2) { _select = '<option value="1">待审核</option><option value="2" selected>已通过</option><option value="3">未通过</option>' }
+        if (status == 3) { _select = '<option value="1">待审核</option><option value="2">已通过</option><option value="3" selected>未通过</option>' }
+        var _html = '<div class="form-group form-group-sm"><div class="col-sm-2" style="padding:0;">状态</div><div class="col-sm-10" style="padding:0;"><select id="_Status" name="Status" class="form-control" data-style="btn-default btn-sm">' + _select + '</select></div></div><br/><div class="form-group form-group-sm"><div class="col-sm-2" style="padding:0;">备注</div><div class="col-sm-10" style="padding:0;"><input id="_Remark" name="_Remark" value="' + remark + '" type="text" class="form-control"></div></div>'
+        $("#_Status").val(status)
+        dialogComfirm(_html, function () {
+            loading();
+            $.postJSON('/Shop/Dev_ShopProduct/UpdateData', { "id": id, "status": $('#_Status').val(), "remark": $('#_Remark').val() }, function (resJson) {
+                loading(false);
+
+                if (resJson.Success) {
+                    $table.bootstrapTable('refresh');
+                    dialogSuccess('更新成功!');;
                 }
                 else {
                     dialogError(resJson.Msg);

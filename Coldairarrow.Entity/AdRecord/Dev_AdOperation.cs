@@ -73,6 +73,11 @@ namespace Coldairarrow.Entity.AdRecord
         public String TradeNo { get; set; }
 
         /// <summary>
+        /// 付款方式
+        /// </summary>
+        public String PayWay { get; set; }
+
+        /// <summary>
         /// 创建时间
         /// </summary>
         public DateTime? CreateTime { get; set; }

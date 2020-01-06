@@ -43,9 +43,9 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList1(Pagination pagination, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
+        public ActionResult GetDataList1(Pagination pagination, string aboutId, string userId, string username, string keyword, int? IsTop, int? IsRefresh, int? IsRefreshUser, int? Status, DateTime? adTime, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_AdRecordBus.GetDataList(pagination, false, 1, aboutId, userId, username, keyword, Status, _startTime, _endTime, startTime, endTime);
+            var dataList = _dev_AdRecordBus.GetDataList(pagination, false, 1, aboutId, userId, username, keyword, IsTop, IsRefresh, IsRefreshUser, Status, adTime, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }
@@ -57,9 +57,9 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList2(Pagination pagination, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
+        public ActionResult GetDataList2(Pagination pagination, string aboutId, string userId, string username, string keyword, int? IsTop, int? IsRefresh, int? IsRefreshUser, int? Status, DateTime? adTime, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_AdRecordBus.GetDataList(pagination, false, 2, aboutId, userId, username, keyword, Status, _startTime, _endTime, startTime, endTime);
+            var dataList = _dev_AdRecordBus.GetDataList(pagination, false, 2, aboutId, userId, username, keyword, IsTop, IsRefresh, IsRefreshUser, Status, adTime, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }
@@ -96,6 +96,22 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         public ActionResult DeleteData(string ids)
         {
             var res = _dev_AdRecordBus.DeleteData(ids.ToList<string>());
+
+            return JsonContent(res.ToJson());
+        }
+
+        /// <summary>
+        /// 更新状态
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="status">状态</param>
+        /// <param name="remark">备注</param>
+        public ActionResult UpdateData(string id, string status, string remark)
+        {
+            var theData = id.IsNullOrEmpty() ? new Dev_AdRecord() : _dev_AdRecordBus.GetTheData(id);
+            theData.Status = int.Parse(status);
+            theData.Remark = remark;
+            var res = _dev_AdRecordBus.UpdateData(theData);
 
             return JsonContent(res.ToJson());
         }

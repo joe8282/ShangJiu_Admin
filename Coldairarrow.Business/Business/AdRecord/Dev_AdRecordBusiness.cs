@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace Coldairarrow.Business.AdRecord
 {
@@ -15,7 +16,7 @@ namespace Coldairarrow.Business.AdRecord
     {
         #region 外部接口
 
-        public List<Dev_AdRecordDTO> GetDataList(Pagination pagination, bool all, int typeId, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
+        public List<Dev_AdRecordDTO> GetDataList(Pagination pagination, bool all, int typeId, string aboutId, string userId, string username, string keyword, int? IsTop, int? IsRefresh, int? IsRefreshUser, int? Status, DateTime? adTime, DateTime? startTime, DateTime? endTime)
         {
             IQueryable<Dev_AdRecordDTO> q = null;
 
@@ -59,12 +60,20 @@ namespace Coldairarrow.Business.AdRecord
                 where = where.And(x => x.UserId == userId);
             if (!aboutId.IsNullOrEmpty())
                 where = where.And(x => x.AboutId == aboutId);
+            if (!IsTop.IsNullOrEmpty())
+                where = where.And(x => x.IsTop == IsTop);
+            if (!IsRefresh.IsNullOrEmpty())
+                where = where.And(x => x.IsRefresh == IsRefresh);
+            if (!IsRefreshUser.IsNullOrEmpty())
+                where = where.And(x => x.IsRefreshUser == IsRefreshUser);
             if (!Status.IsNullOrEmpty())
                 where = where.And(x => x.Status == Status);
             if (!startTime.IsNullOrEmpty())
-                where = where.And(x => x.CreateTime >= startTime);
+                where = where.And(x => DbFunctions.TruncateTime(x.CreateTime) >= startTime);
             if (!endTime.IsNullOrEmpty())
-                where = where.And(x => x.CreateTime <= endTime);
+                where = where.And(x => DbFunctions.TruncateTime(x.CreateTime) <= endTime);
+            if (!adTime.IsNullOrEmpty())
+                where = where.And(x => DbFunctions.TruncateTime(x.StartTime) <= adTime && DbFunctions.TruncateTime(x.EndTime) >= adTime);
             if (!keyword.IsNullOrEmpty())
                 where = where.And(x => x.AboutTitle.Contains(keyword));
             if (!username.IsNullOrEmpty())

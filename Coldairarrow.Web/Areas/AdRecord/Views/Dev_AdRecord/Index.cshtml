@@ -22,23 +22,42 @@
     <div class="fx-wrapper">
         <form class="form-inline" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>置顶</label>
+                <select id="IsTop" name="IsTop" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="UserId">操作人</option>
-                    <option value="RecordType">记录类型</option>
-                    <option value="AboutId">所属ID</option>
-                    <option value="AdProvice">推广省份</option>
-                    <option value="AdCity">推广城市</option>
-                    <option value="AdArea">推广区县</option>
-                    <option value="TradeNo">交易号</option>
-                    <option value="PayWay">付款类型</option>
-                    <option value="Remark">备注</option>
+                    <option value="1">是</option>
+                    <option value="2">否</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+                <label>自刷</label>
+                <select id="IsRefresh" name="IsRefresh" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+                <label>手刷</label>
+                <select id="IsRefreshUser" name="IsRefreshUser" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+                <label>状态</label>
+                <select id="Status" name="Status" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">未付款</option>
+                    <option value="2">已付款</option>
+                    <option value="3">已通过</option>
+                    <option value="4">未通过</option>
+                </select>
+                <input type="text" class="form-control input-sm" name="username" style="width:250px;" placeholder="请输入用户昵称、用户名称、手机号关键字">
+                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入标题关键字">
             </div>
             <div class="form-group">
+                <label>推广时间</label>
+                <input name="adTime" id="adTime" type="text" placeholder="推广时间" data-date-format="yyyy-mm-dd" class="form-control input-sm">
+                <label>创建时间</label>
+                <input name="startTime" id="startTime" type="text" placeholder="开始时间" data-date-format="yyyy-mm-dd" class="form-control input-sm">
+                <label>~</label>
+                <input name="endTime" id="endTime" type="text" placeholder="结束时间" data-date-format="yyyy-mm-dd" class="form-control input-sm">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
                     <i class="glyphicon glyphicon-search"></i>
                     查询
@@ -119,6 +138,7 @@
                         var builder = new BtnBuilder();
                         builder.AddBtn({ icon: 'glyphicon-edit', function: 'openForm', param: [row['Id']] });
                         builder.AddBtn({ icon: 'glyphicon-trash', function: 'deleteData', param: [row['Id']] });
+                        builder.AddBtn({ name: ' 状态处理', icon: 'glyphicon-cog', function: 'updateData', param: [row['Id'], row['Status'], row['Remark']] });
 
                         return builder.build();
                     }
@@ -135,7 +155,18 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#startTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
+        $('#endTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒
+        });
+        $('#adTime').datetimepicker({
+            language: 'zh-CN',
+            minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
     }
 
     //打开表单
@@ -178,6 +209,31 @@
                 if (resJson.Success) {
                     $table.bootstrapTable('refresh');
                     dialogSuccess('删除成功!');
+                }
+                else {
+                    dialogError(resJson.Msg);
+                }
+            });
+        });
+    }
+
+    //更新状态
+    function updateData(id, status, remark) {
+        var _select
+        if (status == 1) { _select = '<option value="1" selected>未付款</option><option value="2">已付款</option><option value="3">已通过</option><option value="4">未通过</option>' }
+        if (status == 2) { _select = '<option value="1">未付款</option><option value="2" selected>已付款</option><option value="3">已通过</option><option value="4">未通过</option>' }
+        if (status == 3) { _select = '<option value="1">未付款</option><option value="2">已付款</option><option value="3" selected>已通过</option><option value="4">未通过</option>' }
+        if (status == 4) { _select = '<option value="1">未付款</option><option value="2">已付款</option><option value="3">已通过</option><option value="4" selected>未通过</option>' }
+        var _html = '<div class="form-group form-group-sm"><div class="col-sm-2" style="padding:0;">状态</div><div class="col-sm-10" style="padding:0;"><select id="_Status" name="Status" class="form-control" data-style="btn-default btn-sm">' + _select + '</select></div></div><br/><div class="form-group form-group-sm"><div class="col-sm-2" style="padding:0;">备注</div><div class="col-sm-10" style="padding:0;"><input id="_Remark" name="_Remark" value="' + remark + '" type="text" class="form-control"></div></div>'
+        $("#_Status").val(status)
+        dialogComfirm(_html, function () {
+            loading();
+            $.postJSON('/AdRecord/Dev_AdRecord/UpdateData', { "id": id, "status": $('#_Status').val(), "remark": $('#_Remark').val() }, function (resJson) {
+                loading(false);
+
+                if (resJson.Success) {
+                    $table.bootstrapTable('refresh');
+                    dialogSuccess('更新成功!');;
                 }
                 else {
                     dialogError(resJson.Msg);

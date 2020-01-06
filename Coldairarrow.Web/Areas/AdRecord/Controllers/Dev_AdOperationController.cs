@@ -37,15 +37,15 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         #region 获取数据
 
         /// <summary>
-        /// 获取数据列表
+        /// 获取数据列表（商号操作）
         /// </summary>
         /// <param name="pagination">分页参数</param>
         /// <param name="condition">查询类型</param>
         /// <param name="keyword">关键字</param>
         /// <returns></returns>
-        public ActionResult GetDataList(Pagination pagination, string adRecordType, string operationType, string aboutId, string userId, string username, string keyword, int? Status, DateTime? _startTime, DateTime? _endTime, DateTime? startTime, DateTime? endTime)
+        public ActionResult GetDataList(Pagination pagination, string adRecordId, string adRecordType, string operationType, string aboutId, string userId, string username, string keyword, int? Status, DateTime? adTime, DateTime? startTime, DateTime? endTime)
         {
-            var dataList = _dev_AdOperationBus.GetDataList(pagination, false, adRecordType, operationType, aboutId, userId, username, keyword, Status, _startTime, _endTime, startTime, endTime);
+            var dataList = _dev_AdOperationBus.GetDataList(pagination, false, adRecordId, adRecordType, operationType, aboutId, userId, username, keyword, Status, adTime, startTime, endTime);
 
             return DataTable_Bootstrap(dataList, pagination);
         }
@@ -82,6 +82,22 @@ namespace Coldairarrow.Web.Areas.AdRecord.Controllers
         public ActionResult DeleteData(string ids)
         {
             var res = _dev_AdOperationBus.DeleteData(ids.ToList<string>());
+
+            return JsonContent(res.ToJson());
+        }
+
+        /// <summary>
+        /// 更新状态
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="status">状态</param>
+        /// <param name="remark">备注</param>
+        public ActionResult UpdateData(string id, string status, string remark)
+        {
+            var theData = id.IsNullOrEmpty() ? new Dev_AdOperation() : _dev_AdOperationBus.GetTheData(id);
+            theData.Status = int.Parse(status);
+            theData.Remark = remark;
+            var res = _dev_AdOperationBus.UpdateData(theData);
 
             return JsonContent(res.ToJson());
         }

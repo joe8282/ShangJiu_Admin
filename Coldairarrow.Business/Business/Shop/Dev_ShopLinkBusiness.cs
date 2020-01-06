@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Linq.Expressions;
-
+using System.Data.Entity;
 
 namespace Coldairarrow.Business.Shop
 {
@@ -42,9 +42,9 @@ namespace Coldairarrow.Business.Shop
             if (!Status.IsNullOrEmpty())
                 where = where.And(x => x.Status == Status);
             if (!startTime.IsNullOrEmpty())
-                where = where.And(x => x.CreateTime >= startTime);
+                where = where.And(x => DbFunctions.TruncateTime(x.CreateTime) >= startTime);
             if (!endTime.IsNullOrEmpty())
-                where = where.And(x => x.CreateTime <= endTime);
+                where = where.And(x => DbFunctions.TruncateTime(x.CreateTime) <= endTime);
             if (!keyword.IsNullOrEmpty())
             {
                 where = where.And(x =>

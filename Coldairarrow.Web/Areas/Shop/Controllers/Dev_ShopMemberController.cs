@@ -86,6 +86,23 @@ namespace Coldairarrow.Web.Areas.Shop.Controllers
             return JsonContent(res.ToJson());
         }
 
+
+        /// <summary>
+        /// ¸üÐÂ×´Ì¬
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="status">×´Ì¬</param>
+        /// <param name="remark">±¸×¢</param>
+        public ActionResult UpdateData(string id, string status, string remark)
+        {
+            var theData = id.IsNullOrEmpty() ? new Dev_ShopMember() : _dev_ShopMemberBus.GetTheData(id);
+            theData.Status = int.Parse(status);
+            theData.Remark = remark;
+            var res = _dev_ShopMemberBus.UpdateData(theData);
+
+            return JsonContent(res.ToJson());
+        }
+
         #endregion
     }
 }
