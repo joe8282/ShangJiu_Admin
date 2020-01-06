@@ -22,27 +22,56 @@
     <div class="fx-wrapper">
         <form class="form-inline" id="searchForm">
             <div class="form-group">
-                <label>查询类别</label>
-                <select class="selectpicker" name="condition" data-style="btn-default btn-sm" data-width="100px">
+                <label>类型</label>
+                <select id="TypeId" name="TypeId" data-style="btn-default btn-sm" data-width="100px"></select>
+            </div>
+            <div class="form-group">
+                <label>行业</label>
+                <select id="ClassId" name="ClassId" data-style="btn-default btn-sm" data-width="100px"></select>
+            </div>
+            <div class="form-group">
+                <label>应用</label>
+                <select id="ChannelId" name="ChannelId" data-style="btn-default btn-sm" data-width="100px"></select>
+            </div>
+            <div class="form-group">
+                <label>收费设置</label>
+                <select id="FeeWay" name="FeeWay" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
                     <option value="">请选择</option>
-                    
-                    <option value="ProductTitle">商讯标题</option>
-                    <option value="ProductPic">商讯主图</option>
-                    <option value="ProductRemark">商讯摘要</option>
-                    <option value="ProductContent">商讯内容</option>
-                    <option value="ShopId">所属商号</option>
-                    <option value="UserId">创建人</option>
-                    <option value="TypeId">所属类型</option>
-                    <option value="ClassId">所属行业</option>
-                    <option value="ChannelId">所属应用</option>
-                    <option value="Provice">省份</option>
-                    <option value="City">城市</option>
-                    <option value="Area">区县</option>
-                    <option value="FromWay">来源</option>
-                    <option value="Author">作者</option>
-                    <option value="Source">出处</option>
+                    <option value="1">免费</option>
+                    <option value="2">订阅收费</option>
+                    <option value="3">项目收费</option>
                 </select>
-                <input type="text" class="form-control input-sm" name="keyword" placeholder="请输入关键字">
+            </div>
+            <div class="form-group">
+                <label>推广</label>
+                <select id="IsAd" name="IsAd" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">是</option>
+                    <option value="2">否</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>状态</label>
+                <select id="Status" name="Status" class="selectpicker" data-style="btn-default btn-sm" data-width="100px">
+                    <option value="">请选择</option>
+                    <option value="1">待审核</option>
+                    <option value="2">已通过</option>
+                    <option value="3">未通过</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>创建人</label>
+                <input name="UserName" type="text" class="form-control input-sm">
+            </div>
+            <div class="form-group">
+                <label>标题</label>
+                <input name="ProductTitle" type="text" class="form-control input-sm">
+            </div>
+            <div class="form-group">
+                <label>创建时间</label>
+                <input name="StartTime" id="StartTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
+                <label>~</label>
+                <input name="EndTime" id="EndTime" type="text" data-date-format="yyyy-mm-dd hh:ii:ss" class="form-control">
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-default btn-sm" onclick="javascript: $('#dataTable').bootstrapTable('refresh', { silent: true });">
@@ -81,35 +110,68 @@
             pageList: [10, 30, 60, 100],
             columns: [
                 { title: 'ck', field: 'ck', checkbox: true, width: '3%' },
-                { title: '商讯标题', field: 'ProductTitle', width: '5%' },
-                { title: '商讯主图', field: 'ProductPic', width: '5%' },
-                { title: '商讯摘要', field: 'ProductRemark', width: '5%' },
-                { title: '商讯内容', field: 'ProductContent', width: '5%' },
-                { title: '所属商号', field: 'ShopId', width: '5%' },
-                { title: '创建人', field: 'UserId', width: '5%' },
-                { title: '所属类型', field: 'TypeId', width: '5%' },
-                { title: '所属行业', field: 'ClassId', width: '5%' },
-                { title: '所属应用', field: 'ChannelId', width: '5%' },
-                { title: '省份', field: 'Provice', width: '5%' },
-                { title: '城市', field: 'City', width: '5%' },
-                { title: '区县', field: 'Area', width: '5%' },
-                { title: '收费设置', field: 'FeeWay', width: '5%' },
-                { title: '费用', field: 'PayFee', width: '5%' },
-                { title: '来源', field: 'FromWay', width: '5%' },
-                { title: '作者', field: 'Author', width: '5%' },
-                { title: '出处', field: 'Source', width: '5%' },
-                { title: '是否推广', field: 'IsAd', width: '5%' },
-                { title: '推广支出', field: 'AdFee', width: '5%' },
-                { title: '评论数量', field: 'CommentNum', width: '5%' },
-                { title: '浏览数量', field: 'ClickNum', width: '5%' },
-                { title: '收藏数量', field: 'CollectionNum', width: '5%' },
-                { title: '点赞数量', field: 'GoodNum', width: '5%' },
-                { title: '收费累计', field: 'GetPayFee', width: '5%' },
-                { title: '打赏累计', field: 'GetRewardFee', width: '5%' },
-                { title: '创建时间', field: 'CreateTime', width: '5%' },
-                { title: '状态', field: 'Status', width: '5%' },
-                { title: '操作时间', field: 'StatusTime', width: '5%' },
-                { title: '排序', field: 'Sort', width: '5%' },
+                {
+                    title: '商讯标题', field: 'ProductTitle', width: '10%', formatter: function (value, row) {
+                        return row['ProductTitle'] + '<br/><br/><img src="' + row['ProductPic'] + '" width="80%" />';
+                    }
+                },
+                {
+                    title: '创建人信息', field: 'ProductRemark', width: '10%', formatter: function (value, row) {
+                        return '用户昵称：' + row['UserName'] + '<br/>用户名称：' + row['RealName'] + '<br/>手机号：' + row['Phone']  + '<br/>所在区域：' + row['Provice'] + row['City'] + row['Area'];
+                    } },
+                {
+                    title: '类型|行业|应用', field: 'TypeId', width: '10%', formatter: function (value, row) {
+                        return '类型：' + row['TypeName'] + '<br/>行业：' + row['ClassName'] + '<br/>应用：' + row['ChannelName'];
+                    }
+                },
+                {
+                    title: '收费设置', field: 'FeeWay', width: '5%',
+                    formatter: function (cellvalue, options, rowObject) {
+                        if (cellvalue == '1') {
+                            return "<span class=\"label label-success\">免费</span>";
+                        } else if (cellvalue == '2'){
+                            return '订阅收费：' + '<br/>费用：' + row['PayFee'];
+                        } else if (cellvalue == '3') {
+                            return '项目收费：' + '<br/>费用：' + row['PayFee'];
+                        }
+                    }},
+                {
+                    title: '来源|作者|出处', field: 'FromWay', width: '5%', formatter: function (value, row) {
+                        return '来源：' + row['FromWay'] + '<br/>作者：' + row['Author'] + '<br/>出处：' + row['Source'];
+                    } },
+                {
+                    title: '是否推广', field: 'IsAd', width: '5%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '是',
+                            '2': '否'
+                        };
+                        return '是否推广：' + mapping[row['IsAd']]
+                    }
+                },
+                {
+                    title: '推广支出', field: 'AdFee', width: '10%', formatter: function (value, row) {
+                        return '收费累计：' + row['GetPayFee'] + '<br/>打赏累计：' + row['GetRewardFee'] + '<br/><br/>推广支出：' + row['AdFee'];
+                    }},
+                {
+                    title: '统计', field: 'CommentNum', width: '10%', formatter: function (value, row) {
+                        return '评论数量：' + row['CommentNum'] + '<br/>浏览数量：' + row['ClickNum'] + '<br/><br/>收藏数量：' + row['CollectionNum'] + '<br/>点赞数量：' + row['GoodNum'];
+                    }
+                },
+                {
+                    title: '状态', field: 'Status', width: '12%', formatter: function (value, row) {
+                        var mapping = {
+                            '1': '<span class=\"label label-default\">待审核</span>',
+                            '2': '<span class=\"label label-primary\">已通过</span>',
+                            '3': '<span class=\"label label-danger\">未通过</span>'
+                        };
+                        if (row['StatusTime'] == null) {
+                            return mapping[value] + '<br/><br/>创建时间：<br/>' + row['CreateTime'] + '<br/><br/>排序：' + row['Sort'];
+                        } else {
+                            return mapping[value] + '<br/>操作时间：<br/>' + row['StatusTime'] + '<br/><br/>创建时间：<br/>' + row['CreateTime'] + '<br/><br/>排序：' + row['Sort'];
+                        }
+                    }
+                        
+                },
                 {
                     title: '操作', field: '_', width: '80%', formatter: function (value, row) {
                         var builder = new BtnBuilder();
@@ -131,7 +193,30 @@
 
     //绑定事件
     function bindEvent() {
-
+        $('#TypeId').selectpicker({
+            url: '/SystemManage/Dev_Type/GetDataList_NoPagin?parentId=1204236075598483456',
+            valueField: 'Id',
+            textField: 'Name',
+            pleaseSelect: true
+        });
+        $('#ClassId').selectpicker({
+            url: '/SystemManage/Dev_Type/GetDataList_NoPagin?parentId=1204236610573570048',
+            valueField: 'Id',
+            textField: 'Name',
+        });
+        $('#ChannelId').selectpicker({
+            url: '/SystemManage/Dev_Type/GetDataList_NoPagin?parentId=1209655008472207360',
+            valueField: 'Id',
+            textField: 'Name',
+        });
+        $('#StartTime').datetimepicker({
+            language: 'zh-CN',
+            //minView: "month", //选择日期后，不会再跳转去选择时分秒 
+        });
+        $('#EndTime').datetimepicker({
+            language: 'zh-CN',
+            //minView: "month", //选择日期后，不会再跳转去选择时分秒
+        });
     }
 
     //打开表单
